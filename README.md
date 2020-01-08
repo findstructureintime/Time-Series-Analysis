@@ -1,4 +1,4 @@
-# Materials for symposium and workshop series: Finding Structure in Time
+# Code and material for paper *Finding Structure in Time: Visualizing and Analyzing Behavioral Time Series*
 
 STEPS to use these toolkits:
 1. Download a clone of this toolkit to your own labtop. You can click the green button `Clone or download` to download a ZIP file. Or, if you use Git Bash, simply type in:
