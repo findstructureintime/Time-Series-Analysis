@@ -1,0 +1,124 @@
+function simpleAnnotationPlots
+
+%this script plots a single dimension of event-type data (i.e. annotations with onset and offset), with annotations differentiated by their 
+% vertical positions on a plot. It uses the outputs from annotationImport.m 
+
+%using the sample data we will plot infant affect (in column 4 of the MoInfAffectArray data)- which has three values: 
+%  +1, 0 and -1, where: 
+    % +1 -> approach, 0 -> neutral , -1 ->  withdrawal (negative)
+    
+%onset and offset for the annotations are in columns 1 and 2
+%respectively. 
+   
+%data dir should point the folder with your ready-for-matlab annotation files (see AnnotationImport.m) 
+dataDir ='C:\Users\kdeba\Dropbox\Libraries\Documents\presentations\2018 ICIS\workshop\final materials\Kaya materials\data\';
+saveDir='C:\Users\kdeba\Dropbox\Libraries\Documents\presentations\2018 ICIS\workshop\final materials\Kaya materials\data\outputs\';
+
+for pID = [ 3011 ] %[ 3011 3029 3292 3466 3569]% list all your pIDs here to loop through the code below for each
+    
+    % use string concatenation function strcat to specify exact data files
+    fname=strcat(dataDir,'MoInfAffectArray_', num2str(pID), '.csv');
+    
+    %read data using csvread command
+    pData=csvread(fname);
+    
+    %pData has multiple types of annotations but we only want to plot infant affect for now. So we'll 
+    %grab all infant affect annotations (in col 4)and store them in a temporary array called "dataRows". 
+    % so, we grab all rows that have some annotations in column 4 of pData 
+    % using isnan and the ~ logical operator which means "NOT"
+    
+    dataRows = pData(~(isnan(pData(:,4))),:); %grab complete row by indicating pData(:,4) - all rows, fourth column
+    
+    figure (pID) %foreground the figure associated with current participant
+    hold on    % don't overwrite what was previously there
+    
+    % plot a blue line at y = 0 for the duration of the session to mark
+    % the position of "neutral" infant affect (note: this is simply a design
+    % choice and not data, comment out line 45 if you want to skip this)
+    %     % plot syntax for drawing lines is :
+    %     plot([x1 x2], [y1 y2 ])
+    %     plot([onset offset], [vertical position vertical position ])
+    
+    plot([pData(1,1) pData(end,2)], [0 0 ], 'c', 'LineWidth',10)
+    
+    %next use a for loop to go row by row through the infant affect events
+    %and add each event as a "line" on the plot
+    
+    for row = 1: 1:size(dataRows,1) %this sets up an index "row" which will cycle through a series of values, 
+        %starting from 1 and going until the last row in increments of 1 -
+        %in this case each row corresponds to a single event to be plotted
+       
+        %The text below breaks down our main plotting syntax: plot(dataRows(row,[1 2]), dataRows(row,[4 4]), 'k', 'LineWidth',25)
+               
+        % uncommenting and running line 56 when this for loop is active- will provide the onset and offset for the
+        % event specified by the specific row value - your [ x1 x2 ] values for that event! 
+        % see this video on breakpoints and debugging in matlab: https://www.youtube.com/watch?v=PdNY9n8lV1Y
+        % dataRows(row,[1 2])) 
+        % for p3011 infnat affect row = 1 , this will return the values [
+        % 3154.5 3161.5] (columns 1 and 2 of row 1) 
+        
+        % uncommenting and running line 65 when this for loop is active- will
+        % provide the vertical position values associated with the event
+        % type which will be our [ y1 y2 ] values. for infant affect, these
+        % values are in column four for each annotation and can have the values  0 1 or -1). 
+        % this means positive annotations will be plotted at y=1 , negative at y=-1 , neutral at y=0. 
+        % dataRows(row,[4 4]) 
+        % for p3011 infnat affect row = 1 , this will return the values [0 0], column 4 (note, twice!!) of row 1
+        % corresponding to neutral affect  
+
+        %putting lines 56 and 65 together in the plot syntax (line 75), i.e.
+        %plot(dataRows(row,[1 2]), dataRows(row,[4 4]), 'k', 'LineWidth',25) will return: 
+        %plot([3154.5 3161.5], [0 0], 'k', 'LineWidth',25)
+        % and will plot a single black line from 3154.5 to 3161.5 (x axis) at the
+        % y axis position y =0 - ie our first infnat affect event plotted!
+        
+        plot(dataRows(row,[1 2]), dataRows(row,[4 4]), 'k', 'LineWidth',25) % plot the annotation from the current row
+        %dataRows(row,[1 2]) w using annotation onset and offset time for x1 and x2
+        
+        % some simple modifications: 
+        % If you want to shift events up (y axis) by 5, e.g. you could simply do, e.g.    
+        % plot(dataRows(row,[1 2]), dataRows(row,[4 4])+5, 'k')
+        
+        % If you want to make events tighter on (y axis), e.g. you could simply do, e.g.    
+        % plot(dataRows(row,[1 2]), dataRows(row,[4 4])/2, 'k') % or, try increasing line width parameter
+
+        % If you want to shift events forward in time, e.g. you could simply do, e.g.    
+        % plot(dataRows(row,[1 2])+5, dataRows(row,[4 4]), 'k')
+        
+        % If you want your x axis to be in minutes, e.g. you could simply do, e.g.    
+        % plot(dataRows(row,[1 2])/60, dataRows(row,[4 4]), 'k')
+        
+        % If you want to plot mom's affect data rather than infants, e.g. edit line 35 to edit dataRows to grab all rows with data in column 3 
+        %(ie. the ematernal affect data rather than infant ) and change your plot line to:   
+        % plot(dataRows(row,[1 2]), dataRows(row,[3 3]), 'k') 
+        
+        % if you want to put mom and infant on the same plot, you might want to shift mom's affect up a bit and
+        % plot it in a different color, e.g. 
+        % plot(dataRows(row,[1 2])+ 5, dataRows(row,[3 3]), 'c')
+        % note that you'll also have to use "hold on" and run two for loops -  one looping
+        % through mom affect data rows and one looping through infnat affect data rows
+        
+        
+
+        
+    end
+    
+    %resize axis
+    axis([pData(1,1) pData(size(pData,1),2) -2 2])
+    
+    %label
+    title(strcat('Infant Affect:', (num2str(pID))));
+    
+    %saving your images
+    savename=strcat(saveDir,'P', num2str(pID), '_InfAffect');
+    %  print('-depsc','-tiff','-r300',strcat(savename, '.eps')) %high quality
+    saveas( gcf, char(strcat(savename,'.fig')));  %saves a matlab file
+    saveas( gcf, char(strcat(savename,'.jpg')));  %saves a jpg
+    
+end
+
+
+%exercise: add moms affect data - located in 
+
+
+
