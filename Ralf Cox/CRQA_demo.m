@@ -1,8 +1,8 @@
-function [ output ]= CRQA_demo( rec )
+function [ output ] = CRQA_demo( rec )
 
 % CRQA_demo calculates recurrence measures for the non-diagonal line structures.
 % Performs Anisotropic CRQA.
-%
+% 
 
 minLine=2;
 

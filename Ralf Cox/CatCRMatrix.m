@@ -1,8 +1,8 @@
 function [ rec ] = CatCRMatrix( PP1 , PP2 )
 
-% CatCRMatrix calculates the cross-recurrence matrix based on time series PP1 and PP2.
-%
-%
+% CatCRMatrix calculates the cross-recurrence matrix rec based on nominal time series PP1 and PP2.
+% Range of PP1 and PP2 is 0 to 5. Two types of matches are defined.
+% 
 
 for col=1:length(PP2)
     
