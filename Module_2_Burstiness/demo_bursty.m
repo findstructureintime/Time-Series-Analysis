@@ -1,4 +1,4 @@
-%This protocol estimates burstiness and memory (using 'acf.m') from
+%This demo script estimates burstiness and memory (using 'acf.m') from
 %onset events collected by head-mounted cameras on two infants
 %in the first year of life. 
 %Contact: Drew Abney (dhabney@indiana.edu)
