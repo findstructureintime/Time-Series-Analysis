@@ -28,9 +28,6 @@ function [beta_new] = glmtrial(X,n,ht,w)
 % SangGyun Kim
 % Neuroscience Statistics Research Lab (BCS MIT)
 % April 13. 2009
-% 
-% Later modified by Tian Linger Xu
-% txu@indiana.edu
 %================================================================
 
 % Counting window

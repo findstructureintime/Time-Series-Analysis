@@ -1,4 +1,7 @@
 function [GCMAP] = FDR(D,p,ht)
+% This function uses a multiple hypothesis testing error measure, 
+% FDR (Benjamini & Hochberg, 1995; Storey, 2002) to control the expected 
+% proportion of false discovery rate when the number of hypothesis tests is large. 
 
 [CHN,CHN] = size(D);
 
@@ -12,7 +15,7 @@ end
 [Ps,idx] = sort(P(:));
 
 for k = 1:m
-    if Ps(k) > k/m*p;
+    if Ps(k) > k/m*p
         break;
     end
 end

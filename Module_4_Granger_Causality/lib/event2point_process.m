@@ -1,5 +1,5 @@
 function cstream = event2point_process(events, times, point_select)
-% Convert events to cstream with only its onsets or offsets given a range of time
+% This function converts events to cstream with only its onsets or offsets given a range of time
 % cstream = event2cstream(events, times)
 
 total = length(times);

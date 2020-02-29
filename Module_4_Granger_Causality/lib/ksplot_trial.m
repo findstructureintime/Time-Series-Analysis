@@ -1,9 +1,8 @@
-% KS plot using estimated model parameters
-
 function [z_sorted,b,bp,bn] = ksplot_trial(X,bhat,ht,neuron)
+% This function generates KS plot using estimated model parameters
 
 % Size of input data
-[CHN SMP TRL] = size(X);
+[CHN, SMP, TRL] = size(X);
 
 Z = [];
 for itrial = 1:TRL

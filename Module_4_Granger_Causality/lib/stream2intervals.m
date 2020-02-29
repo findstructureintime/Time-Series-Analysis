@@ -1,10 +1,12 @@
-function intervals = point_process2interval(streams_pp, category_list)
+function intervals = stream2intervals(streams, category_list)
+% This is a supportive function that converts time series streams to time
+% intervals (events).
 
-[~, dim] = size(streams_pp);
+[~, dim] = size(streams);
  intervals = cell(1, dim);
  
  for dimidx = 1:dim
-     stream_one = streams_pp(:, dimidx);
+     stream_one = streams(:, dimidx);
      mask_continue = [true; stream_one(2:end, 1) ~= stream_one(1:end-1, 1)];
      indices = find(mask_continue);
      intervals_one = [indices(1:end-1, 1) (indices(2:end, 1)) stream_one(indices(1:end-1))];
