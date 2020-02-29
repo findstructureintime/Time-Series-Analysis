@@ -40,9 +40,13 @@ output = CRQA_out(rec);
 ```
 
 This function performs **Anisotropic CRQA** by quantifying both the vertical and horizontal line structures. It produces the following measures:
+
 *LAM* = Proportion of recurrent points on vertical/horizontal lines (Laminarity)
+
 *TT* = Average vertical/horizontal line length (Trapping Time)
+
 *MaxL* = Length of the longest vertical/horizontal line
+
 *ENT_L* = Shannon entropy of vertical/horizontal line length distribution
 
 You can have a look at the results by opening the file output from the Workspace. In the file you will find two rows. The upper row gives the values for the vertical line structures, the lower row those for the horizontal line structures.
