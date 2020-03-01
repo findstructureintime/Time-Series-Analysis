@@ -13,7 +13,7 @@ Our scripts can be run on Matlab version 2018a and later versions. Matlab is ava
 ## STEPS to use these toolkits:
 1. Download a clone of this toolkit in your local folder. You can click the green button `Clone or download` on this page to download a ZIP file. Or, if you use Git Bash, simply type in:
 ```
-git clone https://github.com/findstructureintime/materials.git
+https://github.com/findstructureintime/Time-Series-Analysis.git
 ```
 2. Open Matlab and set your working path to the folder containing the downloaded toolkit.
 
