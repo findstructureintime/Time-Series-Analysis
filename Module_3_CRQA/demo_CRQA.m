@@ -1,6 +1,6 @@
 function demo_CRQA
 
-% demo_CRQA loads the example data and runs the entire libabry of CRQA functions.
+% demo_CRQA loads the example data and runs the entire set of functions of the CRQA module.
 % 
 % 
 

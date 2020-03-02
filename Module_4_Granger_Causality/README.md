@@ -41,7 +41,7 @@ model_history_range = 9;
 [results_gcause_mat, results_gcause_fdr] = calculate_granger_causality(data_matrix, model_history_range);
 ```
 
-In the calculation, the function *calculate_granger_causality()* will first generate a set of likelihood estimation models for each time series contained in *data_matrix* iterating through history window durations from 1 to *model_history_range*. Then, a best estimation model will be chosen from this sec of candidate models using Akaike’s information criterion (AIC) (Akaike, 1974; Burnham & Anderson, 1998). In our sample case, we set the history window as 9 which is equivalent to 3 seconds since the sampling rate is 3HZ in the sample dataset.
+In the calculation, the function *calculate_granger_causality()* will first generate a set of likelihood estimation models for each time series contained in *data_matrix* iterating through history window durations from 1 to *model_history_range*. Then, the best estimation model will be chosen from this set of candidate models using Akaike’s information criterion (AIC) (Akaike, 1974; Burnham & Anderson, 1998). In our sample case, we set the history window as 9 which is equivalent to 3 seconds since the sampling rate is 3HZ in the sample dataset.
 
 Then, the directional GC influence from one variable *X* to another *Y* is assessed by calculating the relative reduction in the likelihood of producing the particular history of time series of *Y* when the history of *X* is excluded, compared with the likelihood when all the available covariates are used in the prediction. The results are returned in the output *results_gcause_mat* which is a *N by N* matrix. In the result matrix, value at row *i* column *j* is the GC influence from jth variable to ith variable in the input *data_matrix*. 
 
@@ -53,10 +53,3 @@ The second return value *results_gcause_fdr* contains the significance test resu
 ```
 
 Lastly, the script calls a function to display and organize the results in an easily interpretable format.
-
-
-
-
-
-
-

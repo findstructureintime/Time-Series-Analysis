@@ -7,7 +7,7 @@
 %2. Estimate burstiness and memory for face events
 %3. Estimate burstiness and memory for periodic-ish signal
 %4. Estimate burstiness and memory for random signal
-%5. Plot IEI distributions and Burstiness/Memory space
+%5. Plot Inter-Event-Interval (IEI) distributions and Burstiness/Memory space
 
 
 %1. Estimate burstiness and memory for hand events
