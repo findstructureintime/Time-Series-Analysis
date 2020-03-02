@@ -6,14 +6,14 @@ Additionally, the first three scripts are designed to be run one line at a time 
 	 	
 For novice users, we suggest working through the scripts in the order listed below. There are eight total scripts, each described below in detail. 
 
-Script 1: programmingBasics.m
-Script 2: simpleTimeseriesPlots.m
-Script 3: simpleEventDataPlots.m
-Script 4: multiParticipantEventPlotting.m
-Script 5: annotationImport.m
-Script 6: convertEvents2Timeseries.m
-Script 7: plotTimeseriesWithEvents.m
-Script 8: plotSensorData.m
+	Script 1: programmingBasics.m
+	Script 2: simpleTimeseriesPlots.m
+	Script 3: simpleEventDataPlots.m
+	Script 4: multiParticipantEventPlotting.m
+	Script 5: annotationImport.m
+	Script 6: convertEvents2Timeseries.m
+	Script 7: plotTimeseriesWithEvents.m
+	Script 8: plotSensorData.m
 
 For all scripts below you will want to start MATLAB and navigate to the folder where the provided material (.M-functions and the data files) are located. That is, make MATLAB’s current folder equal to the folder to which you downloaded this module (e.g. ‘C:\...\My Documents’). After this you can call these functions via the command line or the Matlab GUI.
 
