@@ -20,7 +20,7 @@ For all scripts below you will want to start MATLAB and navigate to the folder w
 **Script 1: *programmingBasics.m***
 
 1.	First, open the programmingbasics.M file using the matlab GUI. Run the following two lines to import the data into Matlab
-```
+```matlab
 filename = strcat(cd, '\data\genericEventData.csv');
 data_events = csvread(filename);
 ```
@@ -50,7 +50,7 @@ Hint: The comments detail exactly what each line does.
 **Script 2: *simpleTimeseriesPlots.m***
 
 1. 	Next, open the script called simpleTimeseriesPlots.m. We will also run this script line	by line. Highlight and run the following lines: 
-```
+```matlab
 %get to know the simple plot function
 figure(1)
 plot (1,1) 
