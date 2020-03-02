@@ -7,11 +7,11 @@
 % for step by step instructions to run this script, see the README doc
 
 %get rid of all existing variables and plots in the workspace
-clear all 
+clearvars;
 
 %first we will open a csv file with event sequence data
 % use the string concatenation function strcat to specify exact location and name of the data files
-filename = strcat(cd, '\data\genericEventData.csv');
+filename = fullfile('.', 'data', 'genericEventData.csv');
 data_events = csvread(filename);
 
 %data_events is an "array" - more specifically a 87 x 3 double array,
@@ -75,7 +75,7 @@ rows = size(all_four_data, 1)
 cols = size(all_four_data, 2)       
 
 %save your new variable to the data folder
-csvwrite(strcat(cd, '\data\genericEventData_wDuration.csv'), all_four_data)
+csvwrite(fullfile('.', 'data', 'genericEventData_wDuration.csv'), all_four_data)
 %or try
 %csvwrite(strcat(cd, 'data\pick-a-name.csv'), all_four_data)                                
   

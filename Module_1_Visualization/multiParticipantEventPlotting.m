@@ -10,6 +10,7 @@ function multiParticipantEventPlotting
 %For the purposes of the visualization, we will collapse maternal affect into three states: positive 
 %(encompassing +3, +2 and +1) neutral (0) and negative (-1, -2 and -3) to match the infant states. 
 %We will use both color and vertical positioning to differentiate each participants’ states of affect. 
+addpath('libs')
 
 %first we make a color array, assigning a color and position to each state of mother and infant affect
 infAffectColor= {
@@ -30,7 +31,7 @@ momAffectColor= {
 for pID =  [3414  3367 3532 ] % you can add more PIDs to this to loop through all your participants
     
     % use string concatenation function strcat to specify exact data files
-    fname=strcat(cd,'\data\MoInfAffectArray_', num2str(pID), '.csv');
+    fname=fullfile('.', 'data', ['MoInfAffectArray_', num2str(pID), '.csv']);
     
     %read data using csvread command
     pData=csvread(fname);
@@ -105,7 +106,7 @@ for pID =  [3414  3367 3532 ] % you can add more PIDs to this to loop through al
     title(strcat('Mother-Infant Affect:', (num2str(pID))));
     
        
-    savename=strcat(cd, '/data/P', num2str(pID), '_InfAffect');
+    savename = fullfile('.', 'data', ['P', num2str(pID), '_InfAffect']);
     %  print('-depsc','-tiff','-r300',strcat(savename, '.eps')) %high quality
     saveas( gcf, char(strcat(savename,'.fig')));  %saves a matlab file
     saveas( gcf, char(strcat(savename,'.jpg')));  %saves a jpg

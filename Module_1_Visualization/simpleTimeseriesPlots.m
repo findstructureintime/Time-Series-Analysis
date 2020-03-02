@@ -6,12 +6,13 @@ function simpleTimeseriesPlots
 % at a time so users can experience building and modifying plots. it also contains practice problems at the end of the script as well as answers. 
 % for step by step instructions to run this script, see the README doc
 
-clear all 
+clearvars; 
+addpath('libs');
 
 %get to know the simple plot fuction
 figure(1)
-plot (1,1) 
-plot (1,1, 'rs','MarkerSize',10)
+plot(1,1) 
+plot(1,1, 'rs','MarkerSize',10)
 
 %plot your first timeseries using the syntax plot(xvals, yvals)!
 figure (1)
@@ -28,14 +29,14 @@ plot([1 2 3 2 1], 'bs','MarkerSize',10)
 
 %now, lets open up some actual data to plot
 % use the string concatenation function strcat to specify exact location and name of the data files
-dataDir =(strcat (cd, '\data\'));
+dataDir = fullfile('.', 'data');
 
-fnameG=strcat(dataDir,'InfGaze_P6_4mo.csv');
-fnameH=strcat(dataDir,'InfHands_P6_4mo.csv');
+fnameG = fullfile(dataDir,'InfGaze_P6_4mo.csv');
+fnameH = fullfile(dataDir,'InfHands_P6_4mo.csv');
   
 %read face and hand data using csvread command
-gazeData=csvread(fnameG);
-handsData=csvread(fnameH);
+gazeData = csvread(fnameG);
+handsData = csvread(fnameH);
 
 %plot gaze to first object
 figure(1)

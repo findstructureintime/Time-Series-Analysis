@@ -6,11 +6,10 @@ function plotSensorData
 %to plot three different physiological markers (heart rate, electrodermal activity (EDA) and motion (ACC) 
 %into a single plot, and it uses link axes to connect the subplots when zooming or panning.
 
-clear all 
-
-dataDir =(strcat (cd, '\data\'));
-subfolder= (strcat (cd, '\libs'));
-addpath(genpath(subfolder));
+clearvars;
+dataDir = fullfile('.', 'data');
+subfolder = fullfile('.', 'libs');
+addpath(subfolder);
 
 savePlots =1;
 
@@ -29,9 +28,9 @@ for pNum=   [ 1 ] %  [ 2 3 4 5 7 ]  % % could add more participants to this arra
     
     anyE4= 0;
        
-    fnameE4HR=strcat(dataDir,'E4_P', num2str(pNum),'\HR.csv');
-    fnameE4EDA=strcat(dataDir,'E4_P', num2str(pNum), '\EDA.csv');
-    fnameE4ACC=strcat(dataDir,'E4_P', num2str(pNum), '\ACC.csv');
+    fnameE4HR = fullfile(dataDir, ['E4_P', num2str(pNum)],'HR.csv');
+    fnameE4EDA = fullfile(dataDir, ['E4_P', num2str(pNum)], 'EDA.csv');
+    fnameE4ACC = fullfile(dataDir, ['E4_P', num2str(pNum)], 'ACC.csv');
     
     try
         [~,~,time_HR,data_HR] = E4_parse_physio(fnameE4HR); 
@@ -101,7 +100,7 @@ for pNum=   [ 1 ] %  [ 2 3 4 5 7 ]  % % could add more participants to this arra
     %save figs
     if savePlots ==1
         figure(pNum)
-        savename=strcat(dataDir, strcat('E4 data_ P', num2str(pNum)));
+        savename = fullfile(dataDir, strcat('E4 data_ P', num2str(pNum)));
         %  print('-depsc','-tiff','-r300',strcat(savename, '.eps')) %high quality
         saveas( gcf, char(strcat(savename,'.fig')));  %saves a matlab file
         saveas( gcf, char(strcat(savename,'.jpg')));  %saves a jpg

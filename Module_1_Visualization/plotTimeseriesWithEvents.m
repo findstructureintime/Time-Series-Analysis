@@ -4,11 +4,11 @@ function plotTimeseriesWithEvents
 %types of tasks (events), including a habituation task (visual paired comparison; VPC) and watching various video clips (smiling baby, 
 %crying baby, channel hopping; chan hop) task. it plots multiple participants data at once. It also introduces how to add text labels to plots.
 
-clear all 
+clearvars;
 
 nameString = '_HR and Tasks';
 
-dataDir =(strcat (cd, '\data\'));
+dataDir = fullfile('.', 'data');
 
 % create "eventTypesCell" to matche event type (column one) with a name (col 2) and an RGB color value (col 3) for plotting so
 % each task has its own label and color
@@ -31,7 +31,7 @@ eventTypesArray= [10; 30; 35; 40; 50; 71; 72; 73; 74; 75; 81];  %this will help 
 for PID=   [ 1045 1031 ] % could add more participants to this array to loop through all ps in study
     
     % load HR data
-    fname=strcat(dataDir,num2str(PID),'_HR.mat');
+    fname = fullfile(dataDir,[num2str(PID),'_HR.mat']);
     try
         tempvar=load(fname); %here you can use the load function to open the data because it is a .mat file
         HRfile=tempvar.r2rdata;
@@ -41,7 +41,7 @@ for PID=   [ 1045 1031 ] % could add more participants to this array to loop thr
     end
     
     % load event/task data
-    eventfname=strcat(dataDir,num2str(PID),'_CleanEvents.csv');
+    eventfname=fullfile(dataDir,[num2str(PID),'_CleanEvents.csv']);
     try
         eventFile=csvread(eventfname);
         if ~isempty(eventFile)
@@ -104,9 +104,9 @@ for PID=   [ 1045 1031 ] % could add more participants to this array to loop thr
         ylim([ 81 215]) % sets y axis range, selected to fit common HR values for infants
         
         %save your plot
-        savename=strcat(dataDir,'/',num2str(PID), nameString, '.eps');
+        savename=fullfile(dataDir, [num2str(PID), nameString, '.eps']);
         print('-depsc','-tiff','-r300',char(savename)) % save eps file (high quality)
-        saveas( gcf, char(strcat(dataDir,'/',num2str(PID), nameString,'.fig')));  %saves a matlab file
+        saveas( gcf, char(fullfile(dataDir, [num2str(PID), nameString,'.fig'])));  %saves a matlab file
           
     end %close plot loop for current participant
         

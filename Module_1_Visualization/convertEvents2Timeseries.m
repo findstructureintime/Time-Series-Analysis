@@ -10,6 +10,7 @@
 %and then run this script
 
 clearvars;
+addpath('libs')
 
 %edit these parameters: 
 %directory where your event sequence file lives 
@@ -32,17 +33,17 @@ sample_rate = .1; %.1 corr to 10fps  % 0.034 corresponds to 29.97fps (common in 
 for pID = [ 3414  3367 3532 ] % [ 3011 3029 3292 3466 3569] % etc
     %% convert events to streams
     %file name and location
-    dataDir =(strcat (cd, '\data\'));
-    fname_csv_events=strcat(dataDir,'MoInfAffectArray_', num2str(pID), '.csv');
-    data_events = csv2data(fname_csv_events);
+    dataDir = fullfile(cd, 'data');
+    fname_csv_events = fullfile(dataDir, ['MoInfAffectArray_', num2str(pID), '.csv']);
+    data_events = csvread(fname_csv_events);
     
-    data_events= data_events( ~(isnan(data_events(:, dataCol))), [ eventOnsetCol eventOffsetCol dataCol ]);
+    data_events = data_events( ~(isnan(data_events(:, dataCol))), [ eventOnsetCol eventOffsetCol dataCol ]);
         
     % do the conversion using the default parameter settings from Linger's original event2stream function 
     data_stream = event2stream(data_events, sample_rate);
     
     %save the data
-    csvwrite(strcat(dataDir, dataLabel, '_Timeseries_', num2str(pID), '.csv'),data_stream);
+    csvwrite(fullfile(dataDir, [dataLabel, '_Timeseries_', num2str(pID), '.csv']),data_stream);
 
 end
 

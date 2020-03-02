@@ -75,7 +75,7 @@ memory_random=acf(iei_random,1);
 
 
 %5. Plot IEI distributions and Burstiness/Memory space
-
+figure()
 subplot(1,3,1)
 hist(iei_hand,50)
 title('IEI Distribution for Hand Events')

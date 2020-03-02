@@ -3,6 +3,7 @@ function [ output ] = CRQA_out( rec )
 % CRQA_out calculates recurrence measures for the non-diagonal line structures.
 % Performs Anisotropic CRQA.
 % 
+% 
 
 addpath('lib');
 
@@ -14,9 +15,9 @@ for transp=1:2
     else rec=rec';
     end
     
-    rec=abs(rec); %Ignoring the different types of behavioral matched for now.
+    rec=abs(rec); %Ignoring the different types of behavioral matches for now.
         
-    [TTnot dist_L] = tt(rec); %Using 'tt' from the CRP-toolbox to calculate all vertical lines.
+    [TTnot dist_L] = tt(rec); %Using 'tt' from the crp toolbox to calculate all vertical lines.
     freq_L = tabulate(dist_L);
     minL=find(freq_L(:,1)>=minLine,1,'first');
     TT = (sum(freq_L(minL:end,2).*freq_L(minL:end,1)))/sum(freq_L(minL:end,2));

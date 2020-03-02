@@ -5,7 +5,7 @@ function simpleEventDataPlots
 % as well as common modifications . it has been designed to be run one line
 % at a time so users can experience building and modifying plots.
 
-clear all
+clearvars;
 
 %use the simple plot function to plot a single line representing an event
 figure (1)
@@ -25,7 +25,7 @@ plot([ 6.1 9.1], [ 2 2] , 'g', 'LineWidth',10)
 plot([ 6.2 9.1 ], [ 1 1], 'g', 'LineWidth',10 )
 
 %save your figure!
-dataDir =(strcat (cd, '\data\'));
+dataDir = fullfile('.', 'data');
 savename=strcat(dataDir,'simpleEventPlot');
 saveas( gcf, char(strcat(',', '.fig')));  %saves a matlab file
 saveas( gcf, char(strcat(savename,'.jpg')));  %saves a jpg
@@ -52,7 +52,6 @@ axis([0 15 0 10])
 
 %lets try some simple variations!
 
-clf(3) % clear figure 3
 figure (3)
 axis([0 15 0 10])
 hold on

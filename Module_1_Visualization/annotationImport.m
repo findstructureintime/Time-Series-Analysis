@@ -24,11 +24,11 @@ function annotationImport
 % 5- mat problem data (0/1) 6- infant problem data (0/1)
 
 %set data directory
-dataDir =(strcat (cd, '\data\'));
+dataDir = fullfile('.', 'data');
 
 for pID = [3414  3367 3532 ] % [ 3011 3029 3292 3466 3569] % etc
     
-    fname=strcat(dataDir, num2str(pID), 'goodman.csv');
+    fname = fullfile(dataDir, [num2str(pID), 'goodman.csv']);
     
     %use the import function "readtable" to import csvs with both numbers and strings (ie letters and words)
     pDataTable = readtable(fname,'Delimiter',',');  % change delimeter if you have tab separated data,  or otherwise
@@ -79,7 +79,7 @@ for pID = [3414  3367 3532 ] % [ 3011 3029 3292 3466 3569] % etc
     
     %the pData array is complete!
     % save it in a csv file 
-    csvwrite(strcat(dataDir, '\MoInfAffectArray_',num2str(pID), '.csv'),pData);
+    csvwrite(fullfile(dataDir, ['MoInfAffectArray_',num2str(pID), '.csv']),pData);
     
     
 end

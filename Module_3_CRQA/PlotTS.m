@@ -1,6 +1,7 @@
 function PlotTS( PP1 , PP2 )
 
-% PlotTS plots time series PP1 (in blue) and PP2 (in red) separately in a single figure window.
+% PlotTS plots time series PP1 and PP2 separately in a single figure window.
+% 
 % 
 % 
 
