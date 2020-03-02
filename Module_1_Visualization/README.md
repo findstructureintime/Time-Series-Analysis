@@ -17,25 +17,25 @@ For novice users, we suggest working through the scripts in the order listed bel
 
 For all scripts below you will want to start MATLAB and navigate to the folder where the provided material (.M-functions and the data files) are located. That is, make MATLAB’s current folder equal to the folder to which you downloaded this module (e.g. ‘C:\...\My Documents’). After this you can call these functions via the command line or the Matlab GUI.
 
-Script 1: programmingBasics.m
+**Script 1: *programmingBasics.m***
 
 1.	First, open the programmingbasics.M file using the matlab GUI. Run the following two lines to import the data into Matlab
-
+```
 filename = strcat(cd, '\data\genericEventData.csv');
 data_events = csvread(filename);
-
+```
 
 Hint: To run a line, you can highlight it in the script in Matlab and press F9 (keyboard) or "run selection" on the GUI. You can also copy-paste this line into the command line followed by ‘enter’. Note that all lines that begin with a % are “comments” meaning that they are there for communication between coders. Matlab will not process them as part of the script. 
 
 You have just loaded an array csv_events_loc, into the Workspace. More specifically this is an 87 x 3 double array, meaning it has 87 rows and 3 columns and the values are all numeric. Each event is in its own row. The start times of the events are in column 1, the end times in column 2 and the type of event is in column 3. There are four types of events, each coded as a number between 1 and 4. If you go to your workspace you should now find a variable named csv_events_loc in it. If you double click this variable in the workspace Matlab will open a variable window that allows you to view the array. 
 
 2.	We will now begin accessing the data in this array. For example, to find out the start time of the third event, and store it in a new variable, you would run the line: 
-
+```
 third_event_onset = data_events(3,1)
-
+```
 In general, the syntax for accessing (or referencing) array data in matlab 
 And then storing it as a new variable, is as follows:
-name_of_variable_to_store = array_name(row, column). You can use this to access data from any row or column of data_events. Again, once you create a variable it is stored in your workspace. Also, try changing the numbers in the row and column positions to access other elements in the array, or changing the name of the variable to store another data element.  
+*name_of_variable_to_store = array_name(row, column)*. You can use this to access data from any row or column of data_events. Again, once you create a variable it is stored in your workspace. Also, try changing the numbers in the row and column positions to access other elements in the array, or changing the name of the variable to store another data element.  
 
 
 3.	The next lines show you more techniques for accessing multiple array element at once, how to manipulate arrays by adding rows or columns, or by using simple algebra to shift array elements, how to use the size function to determine the size of your arrays, and how to write variables in your workspace to your computer. 
@@ -47,15 +47,15 @@ Hint: The comments detail exactly what each line does.
 4.	For more practice, there are a set of exercises at the bottom of the script. Try to do each on your own, and scroll down for the answers to each. 
 
 
-Script 2: simpleTimeseriesPlots.m
+**Script 2: *simpleTimeseriesPlots.m***
 
 1. 	Next, open the script called simpleTimeseriesPlots.m. We will also run this script line	by line. Highlight and run the following lines: 
-
+```
 %get to know the simple plot function
 figure(1)
 plot (1,1) 
 plot (1,1, 'rs','MarkerSize',10)
-
+```
 The first line of the script will open a new window with a figure object, Figure 1. The second line plots a single datapoint at the position x= 1 y =1 using the syntax plot(xvalues, yvalues). However, as a single datapoint it is not visible on your plot. Therefore, in the third line we replot the datapoint at the same location specifying it as a redsquare (‘rs’) at size 10 ('MarkerSize',10). We will provide more information about these stylistic changes further later in this script. 
 
 2.	Now run lines the next lines to plot your first timeseries!
