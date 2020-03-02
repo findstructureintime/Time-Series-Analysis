@@ -1,113 +1,90 @@
 function annotationImport
 % kaya de barbaro june 2018
-% this is written to import into matlab files exported from video or audio annotation software
-% (Mangold, Noldus, Elan, etc). 
-% Your exported video annotation data should be tab or column delimited (edit below to match) and it should include column headers . 
-% rows should correspond to annotations and include (at a minimum) start  and stop times and the annotation itself. 
-% the order of the exported columns does not matter but you will likely need to edit the code to
-% grab the correct columns.
+% sample data courtesy of Dr.Sherryl Goodman at Emory University
 
-% you can test it with the 3011goodman and 3029goodman files (shared by
-% Sherryl Goodman at Emory University (psysg@emory.edu). 
+% this script transforms the outputs of annotation software commonly used in psychology, such as Elan, DataVyu, Noldus, or Mangold Interact
+% into a more usable format that can be easily worked with
+% within Matlab. It saves the transformed data as a csv file that can be
+% imported by other scripts in this module or otherwise.
 
-%change this directory to indicate the location of the annotation export files on
-%your computer
-dataDir ='C:\Users\kdeba\Dropbox\Libraries\Documents\UT Austin\projects\Meeka Emory\Interact_files\';
-%change this directory to indicate where you want the data processed for matlab to be saved 
-saveDir='C:\Users\kdeba\Dropbox\Libraries\Documents\presentations\2018 ICIS\workshop';
+%We will take as input sample data which contains all events for a single mother-infant pair
+% it contains 10 columns, as follows: 
+%Level, Description, Number,  % we will disregard the first three
+%Onset_Time, Offset_Time, Duration_Time,  % col 4 & 5 are onsets and offsets
+%Maternal Affect, Maternal Problem Data,  % col 7-10 correspond to 4 dimensions of annotations
+% Infant Affect, Infant Problem Data 
+% onset and offset data should be exported as seconds rather than hh:mm:ss
+% format 
 
-for pID = [ 3011 ] % [ 3011 3029 ]
-    % listing all your pIDs here will loop through all the code below
-    %(until the "end" marker below ) for each participant
-    
-    %for loop syntax
-    
-    % for x = [1 : 3]
-    %      %  do WHATEVER;
-    % end
-    
+%we will store a numeric data array as a .csv file. it will contain six
+%columns, as follows
+% 1- event onset 2- event offset
+%3 - maternal affect data (-3 to +3) 
+% 4- infant affect data (-1 to +1)
+% 5- mat problem data (0/1) 6- infant problem data (0/1)
+
+%set data directory
+dataDir =(strcat (cd, '\data\'));
+
+for pID = [3414  3367 3532 ] % [ 3011 3029 3292 3466 3569] % etc
     
     fname=strcat(dataDir, num2str(pID), 'goodman.csv');
     
-    %this time we will use the import function "readtable" because we need to
-    %import data that has both numbers and strings (ie letters and words)
+    %use the import function "readtable" to import csvs with both numbers and strings (ie letters and words)
+    pDataTable = readtable(fname,'Delimiter',',');  % change delimeter if you have tab separated data,  or otherwise
+      
+    % now lets translate the table data into a more generic array format
+    % that is much easier to work with
     
-    pDataTable = readtable(fname,'Delimiter',',');  % change delimeter if you have tab separated data, e.g.
-    
-    
-    % After data is imported in the table format, now we will store it in a
-    % more generic array format.
-    % Below, we call the function table2array to make this conversion
-    
-    %If relevant data columns will always be in the same order (e.g. across participants)
-    %you can grab them simply by refering to their order. In our sample dataset, onset times
-    % are always in column 5 and offset times in column 7, so we'll grab
-    % all rows in those two columns
-    
+    %initialize a new array where we will store this P data
     pData =[];
-    pData = table2array(pDataTable(:,[5,7]));
+    
+    % onset and offset will always be in rows 4 & 5 
+    % use table2array to directly transfer them
+    pData = table2array(pDataTable(:,[4,5]));
     
     %add four empty (NaN) columns to pData using matrix concatenation and the NaN function
-    %matrix concatenation syntax is newstructure = [ piece one, piece two]
-    %(and dimensions of the two pieces to be combined must match)
-    %the NaN function syntax is: NaN(number of rows you want , number of columns you want)
     pData = [ pData , NaN(size(pData,1), 4)];
     
-    
-    %If relevant data columns are not always in the same order, tables allow you to grab them
-    %by referring to them by name. We want to do this for maternal and
-    %infant affect.
-    
-    %this syntax says to put maternal affect into the third column of pData
+    % numerical data can be directly imported into a table
+    % here we refer to the column via column header rather than relative
+    % position
     pData(:,3) = pDataTable.MaternalAffect;
     
-    %You could use this same syntax for the onset and offset columns as
-    %well, or any other numeric data. you cant use this syntax for
-    %data columns that contain any strings - we'll deal with that next
     
-    
-    %our maternal Affect data is already numeric (+2 to -2) so we can just put it into
-    %the pData array.
-    % but infant affect data is strings (ie letters) - which we need to
-    % translate into numbers before putting them into pData
-    
-    %this code defines a new function we can use manipulate the cells in the table.
-    % you don't need to change this code
+    % next, we will translate text-based annotations (such as those in the InfantAffect column)
+    % into  numerical data. Specifically we will convert these as follows:      
+
+    % 'A' (infant approach/ positive affect) -> +1
+    % 'N' (infant neutral affect) -> 0 
+    % 'W' ( infant withdrawal/ negative affect)  -> -1
+
+    % define a function to search for annotations
     cellfind = @(string)(@(cell_contents)(strcmp(string,cell_contents)));
+        
+    %find indices of positive affect anntoations in the infant affect column
+    indicesPA  = find(cellfun(cellfind('A'),pDataTable.InfantAffect));  % 'A' is the annotation for infant positive affect
     
-    % 'A' is the annotation for infant positive affect
-    % 'W' is the annotation for infant negative affect
-    % 'N' is the annotation for infant neutral affect
-    
-    %this code searches for the positive affect anntoations in the infant affect column of
-    %pDataTable and returns the indices for the rows in which 'A' is found
-    %(ie the Postitive affect indices)
-    % you will need to change this - edit 'A' to match whatever the 
-    indicesPA  = find(cellfun(cellfind('A'),pDataTable.InfantAffect));
-    
-    % this code puts a numeric value (1) into those rows of pData where positive affect
-    % was found. we will put them into column FOUR since that's the next
-    % empty column.
+    % place our chosen value into to the corresponding rows of fourth column of pData!
     pData(indicesPA, 4)=1;
     
-    % this next line does the same thing as the previous two but is
-    % combined into one statement
-    % pData(find(cellfun(cellfind('A'),pDataTable.InfantAffect)), 7)= 1;
-    
-    %we'll use the shorthand version for neutral and negative affect but
-    %you can always write out the long form as above
+    % here we do the same for the other two annotations, but more efficiently in one line
     pData(find(cellfun(cellfind('W'),pDataTable.InfantAffect)), 4)= -1;
     pData(find(cellfun(cellfind('N'),pDataTable.InfantAffect)), 4)= 0;
     
-    % see also other possible variations, next data going into columns 5 and 6
-    pData(find(cellfun(cellfind('XX'),pDataTable.MaternalProblemData)), 5)= 0;
-    pData(find(cellfun(cellfind('U'),pDataTable.InfantProblemData)), 6)= 0;
+    % here we tranfer over the data from the Problem Data columns 
+    pData(find(cellfun(cellfind('XX'),pDataTable.MaternalProblemData)), 5)= 1;
+    pData(find(cellfun(cellfind('U'),pDataTable.InfantProblemData)), 6)= 1;
     
-    csvwrite(strcat(saveDir, '\MoInfAffectArray_',num2str(pID), '.csv'),pData);
+    
+    %the pData array is complete!
+    % save it in a csv file 
+    csvwrite(strcat(dataDir, '\MoInfAffectArray_',num2str(pID), '.csv'),pData);
     
     
 end
 
 
+    
 
 
