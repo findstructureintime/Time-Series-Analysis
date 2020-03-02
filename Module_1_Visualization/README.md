@@ -189,9 +189,9 @@ You can imagine that the top line (at the y = 2 position) indicates infant gaze 
 ```matlab
 %create a gaze event array
 gazeEvents  = [
-    	5,    6,    1 ;
-   		3.1 , 4.9 , 2 ;
-    	6.1 , 9.1 , 2 ];
+		5,    6,    1 ;
+		3.1 , 4.9 , 2 ;
+		6.1 , 9.1 , 2 ];
 
 %we can plot all the events in the array using a for loop
 figure (2)
@@ -215,17 +215,17 @@ Hint: To see how this happens, type the line *currentRow=1* into your command wi
 plot(gazeEvents(row,[1 2]), [2 2], 'c', 'LineWidth',10)
 ```
 
-	is read by matlab as:  
+is read by matlab as:  
 ```matlab
 plot([5 6], [2 2], 'c', 'LineWidth',10)
 ```
 
-	the second time, it is read as: 
+the second time, it is read as: 
 ```matlab
 plot([3.1 4.9 ], [2 2], 'c', 'LineWidth',10)
 ```
 
-	and the third time, as: 
+and the third time, as: 
 ```matlab
 plot([6.1 9.1 ], [2 2], 'c', 'LineWidth',10)
 ```
@@ -447,4 +447,4 @@ In this case, the text itself is stored in the variable eventName, which changes
 
 2. Run the script by either pressing the run button in the gui, or copy-pasting script the title *plotSensorData* into the command window and hitting return. You should get a new plot!
 
-
+This code module is written by [Dr. Kaya de Barbaro](https://liberalarts.utexas.edu/psychology/faculty/kd26254), if you have any question please contact *kaya at austin.utexas.edu*.

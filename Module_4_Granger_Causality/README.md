@@ -3,20 +3,20 @@
 With this code module, users can perform Granger Causality computation among a set of point process time series variables. The demo script, *demo_granger_causality.m*, provides guidance through the process step by step with a demo example. The sub-folder, *lib/*, contains all the supporting functions involved in the calculation of GC and significance test. 
 
 Start MATLAB and set the current working directory to the folder where the provided material is located. For example, if the material is located in this directory, ‘C:\Downloads\Time-Series-Analysis\Module_4_Granger_Causality’, you can type this command line in MATLAB console to set the current working directory:
-```
+```matlab
 cd C:\Downloads\Time-Series-Analysis\Module_4_Granger_Causality
 ```
 
 In *demo_granger_causality.m*, the script goes through five main steps.
 
 1. Clean the current workspace and load all supporting functions for Granger Causality (GC) computation:
-```
+```matlab
 clearvars;
 addpath('lib');
 ```
 
 2. Load the samle example dataset:
-```
+```matlab
 sample_data_name = 'gcause_sample_data2.mat';
 load(sample_data_name);
 ```
@@ -27,7 +27,7 @@ There are two sample dataset files, the user can try out both files. Each sample
 **variable_list** contains the *N* variable names in **data_matrix** from top to last row. In our example, we titled our variables with the source behavioral module: infant eye, parent eye, infant hand, parent hand and parent speech. For in-depth explanation of the sample dataset, please see the Scripts & Sample Data section and the Results section in our paper [link]();
 
 3. Visualize the sample time series:
-```
+```matlab
 vis_args.title = 'Sample_time_series_visualization';
 vis_args.annotation = variable_list; 
 visualize_point_process(data_matrix, vis_args);
@@ -36,7 +36,7 @@ visualize_point_process(data_matrix, vis_args);
 With these three lines of codes, the script will generate a plot to visualize the raw time series. The first line of codes specifies the plot title. The second line of codes sets the text annotation next to the visualized times series as our behavioral module list. The last line of codes calls the supporting function *visualize_point_process()* to generate the plot.
 
 4. Specify the length of the history window that will be used for prediction model fitting in GC computation and call the core function *calculate_granger_causality()* to calcuate GC among all five time series in the input *data_matrix*:
-```
+```matlab
 model_history_range = 9;
 [results_gcause_mat, results_gcause_fdr] = calculate_granger_causality(data_matrix, model_history_range);
 ```
@@ -48,8 +48,10 @@ Then, the directional GC influence from one variable *X* to another *Y* is asses
 The second return value *results_gcause_fdr* contains the significance test result for every directional GC influence. Similarly, value at row *i* column *j* is the test result for the GC influence from jth variable to ith variable in the input *data_matrix*. The significance test can result in three outputs: 1/-1/0. 1 means that it is a significantly positive GC influence; -1 means that it is a significantly positive GC influence; 0 means not significant.
 
 5. Display the GC results and organize the results in a table format with the matching GC type:
-```
+```matlab
 [result_gcause_table, gcause_type_list] = prettyprint_gcause_result(results_gcause_mat, results_gcause_fdr, variable_list);
 ```
 
 Lastly, the script calls a function to display and organize the results in an easily interpretable format.
+
+This code module is written by [Dr. Tian Linger Xu](https://http://lingerxu.github.io/), if you have any question please contact *txu at iu.edu*.
