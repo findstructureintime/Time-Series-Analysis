@@ -38,14 +38,20 @@ Note: For nominal data you can directly build-up the cross-recurrence matrix by 
 PlotCRP(rec)
 ```
 
-Note: This is a typical checkerboard pattern you would expect for nominal CRQA. There are three colors in this CRP representing the three different types of states of the dyadic system, based on the numerical values in rec: red for the value +1, blue for the value -1, and white for the value 0. All together the CRP nicely displays the rich coordinative structure of the dyadic interaction across all possible timescales. The color-coded analysis performed here is called **Chromatic CRQA**.
+Note: This is a typical checkerboard pattern you would expect for nominal CRQA. There are three colors in this CRP representing the three different types of states of the dyadic system, based on the numerical values in rec: red for the value +1, blue for the value -1, and white for the value 0. All together the CRP nicely displays the rich coordinative structure of the dyadic interaction across all possible timescales.
 
-5. Finally, calculate the non-diagonal CRQA measures to quantify this structure. For now we will ignore the different types of behavioral matches (i.e. colors in the CRP) and treat them all as equal. Run the following function:
+5. 5. Finally, we will calculate several CRQA measures from this CRP, in order to quantify its structure. Run the following function:
 ```matlab
-output = CRQA_out(rec);
+[Chromatic_CRQA , Anisotropic_CRQA] = CRQA_out(rec)
 ```
 
-This function performs **Anisotropic CRQA** by quantifying both the vertical and horizontal patterns. It produces the following measures:
+his function performs **Chromatic CRQA** and **Anisotropic CRQA** on the data, and provides two output files.
+
+The first output file, *Chromatic_CRQA*, presents the recurrence rate, RR, for the red areas in the upper row and for the blue areas in the lower row. RR is given both as a proportion of the total number of points in the CRP (first column) and as a proportion of the total number of behavioral matches (second column).
+
+Note: The recurrence rate quantifies the density of each particular behavioral match as distinguishes in the analysis (i.e. red and blue). In that sense, the two values of *RR* presented in the output file reflects the extent to which the behaviors of one child match those of the other child in one of two specific ways (corresponding to red or blue), across all possible time scales. The recurrence rate is a crude measure of the dyadic coordination.
+
+The Anisotropic CRQA performed here ignores the different types of behavioral matches (i.e. colors in the CRP), and treats them all as equal. The analysis quantifies both the vertical and horizontal patterns. It produces the following measures:
 
 *LAM* = Proportion of matches in vertical/horizontal patterns
 
@@ -55,11 +61,12 @@ This function performs **Anisotropic CRQA** by quantifying both the vertical and
 
 *ENT_L* = Shannon entropy of vertical/horizontal length distribution
 
-You can have a look at the results in the command window or by opening the file output from the Workspace. There are two rows in output. The upper row gives the values for the vertical patterns; the lower row those for the horizontal patterns.
+You can have a look at the results in the command window or by opening the output file*Anisotropic_CRQA* from the Workspace. There are two rows in *output*. The upper row gives the values for the vertical patterns; the lower row those for the horizontal patterns.
 
-Note: By calculating these measures in both the vertical and horizontal orientation and comparing them, Anisotropic CRQA enables you to study asymmetries in the dynamics. Differences between these measures reflect differences in relative contribution and dominance between the interaction partners. For more information about this see:
+Note: By calculating these measures in both the vertical and horizontal orientation and comparing them, Anisotropic CRQA enables you to study asymmetries in the dynamics. Differences between these measures reflect differences in relative contribution and dominance between the interaction partners.
 
-For more information see:
+For more information about Chromatic CRQA and Anisotropic CRQA on nominal data see:
+
 Cox, R.F.A., Van der Steen, S., De Jonge-Hoekstra, L., Guevara, M., & Van Dijk, M. (2016). Chromatic and anisotropic cross-recurrence quantification analysis of interpersonal behaviour. In C. Webber, C. Ioana, & N. Marwan (Eds). Recurrence Plots and Their Quantifications: Expanding Horizons (pp. 209-225). Springer Proceedings in Physics. ([link](https://www.researchgate.net/publication/299511690_Chromatic_and_Anisotropic_Cross-Recurrence_Quantification_Analysis_of_Interpersonal_Behavior))
 
 This code module is written by [Dr. R.F.A. (Ralf) Cox](https://www.rug.nl/staff/r.f.a.cox/), if you have any question please contact *r.f.a.cox at rug.nl*.

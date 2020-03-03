@@ -13,4 +13,4 @@ rec = CatCRMatrix(PP1,PP2);
 
 PlotCRP(rec)
 
-output = CRQA_out(rec)
+[Chromatic_CRQA,Anisotropic_CRQA] = CRQA_out(rec)
