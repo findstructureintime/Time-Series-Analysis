@@ -2,7 +2,7 @@
 
 With the MATLAB demo script, you can perform the burstiness analysis on spike trains of events. 
 
-Start MATLAB or Octave and select the folder where the provided material (M-functions and data file) is located. That is, make MATLAB’s current folder equal to the folder to which you downloaded this (e.g. ‘C:\...\My Documents’). After this you can call these functions on the command line.
+Start MATLAB or Octave and select the folder where the provided material (M-functions and data file) is located. That is, make MATLAB/Octave’s current folder equal to the folder to which you downloaded this (e.g. ‘C:\...\My Documents’). After this you can call these functions on the command line.
 
 You can easily run the demo script by typing in 'demo_burstiness' into the command line.
 
