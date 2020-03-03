@@ -33,7 +33,7 @@ sample_rate = .1; %.1 corr to 10fps  % 0.034 corresponds to 29.97fps (common in 
 for pID = [ 3414  3367 3532 ] % [ 3011 3029 3292 3466 3569] % etc
     %% convert events to streams
     %file name and location
-    dataDir = fullfile(cd, 'data');
+    dataDir = fullfile('.', 'data');
     fname_csv_events = fullfile(dataDir, ['MoInfAffectArray_', num2str(pID), '.csv']);
     data_events = csvread(fname_csv_events);
     

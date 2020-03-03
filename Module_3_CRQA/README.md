@@ -4,6 +4,12 @@ With these five MATLAB scripts you can perform cross-recurrence quantification a
 
 Start MATLAB and select the folder where the provided material (M-functions and data file) is located. That is, make MATLAB’s current folder equal to the folder to which you downloaded the GitHub folder of this module (e.g. ‘C:\...\My Documents’). After this you can call these functions on the command line.
 
+If you are using Octave, please install the *statistics* package from [here](https://octave.sourceforge.io/statistics/index.html). Then install and load the package prior to running the demo script:
+```
+pkg install statistics-1.4.1.tar.gz
+pkg load statistics
+```
+
 1. First run the following code: 
 ```matlab
 load(‘example_data.mat’)

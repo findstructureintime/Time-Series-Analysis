@@ -7,7 +7,7 @@ Start MATLAB or Octave and set the current working directory to the folder where
 cd C:\Downloads\Time-Series-Analysis\Module_4_Granger_Causality
 ```
 
-If you are using Octave, please install the image package from [here](https://octave.sourceforge.io/image/). Then install and load the package prior to running the demo script:
+If you are using Octave, please install the *image* package from [here](https://octave.sourceforge.io/image/). Then install and load the package prior to running the demo script:
 ```
 pkg install image-2.12.0.tar.gz
 pkg load image
