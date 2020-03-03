@@ -50,7 +50,7 @@ for pNum=   [ 1 ] %  [ 2 3 4 5 7 ]  % % could add more participants to this arra
     end
     
     try
-        [~,~,time_EDA,data_EDA] = E4_parse(fnameE4EDA);
+        [~,~,time_EDA,data_EDA] = E4_parse_physio(fnameE4EDA);
         time_EDA = time_EDA + (60*60*2);  %add or subtract hours (in minutes) to adjust for timezone (hardcoded for central)
         anyE4=1;
         

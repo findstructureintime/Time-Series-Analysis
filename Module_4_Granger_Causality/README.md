@@ -2,9 +2,15 @@
 
 With this code module, users can perform Granger Causality computation among a set of point process time series variables. The demo script, *demo_granger_causality.m*, provides guidance through the process step by step with a demo example. The sub-folder, *lib/*, contains all the supporting functions involved in the calculation of GC and significance test. 
 
-Start MATLAB and set the current working directory to the folder where the provided material is located. For example, if the material is located in this directory, ‘C:\Downloads\Time-Series-Analysis\Module_4_Granger_Causality’, you can type this command line in MATLAB console to set the current working directory:
+Start MATLAB or Octave and set the current working directory to the folder where the provided material is located. For example, if the material is located in this directory, ‘C:\Downloads\Time-Series-Analysis\Module_4_Granger_Causality’, you can type this command line in MATLAB console to set the current working directory:
 ```matlab
 cd C:\Downloads\Time-Series-Analysis\Module_4_Granger_Causality
+```
+
+If you are using Octave, please install the image package from [here](https://octave.sourceforge.io/image/). Then install and load the package prior to running the demo script:
+```
+pkg install image-2.12.0.tar.gz
+pkg load image
 ```
 
 In *demo_granger_causality.m*, the script goes through five main steps.
@@ -54,4 +60,4 @@ The second return value *results_gcause_fdr* contains the significance test resu
 
 Lastly, the script calls a function to display and organize the results in an easily interpretable format.
 
-This code module is written by [Dr. Tian Linger Xu](https://http://lingerxu.github.io/), if you have any question please contact *txu at iu.edu*.
+This code module is written by [Dr. Tian Linger Xu](https://lingerxu.github.io/), if you have any question please contact *txu at iu.edu*.
