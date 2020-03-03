@@ -1,6 +1,24 @@
 function visualize_time_series(data, args)
 % This is a plotting function for visualizing temperol events data
-% For input format, please see the function get_test_data() below
+% 
+% @param data -- input data that contains the time series for
+%           visualization. It is a N*M cell matrix. In each cell, the data
+%           should be in N*3 matrix form representing event data 
+%               [start_time, end_time, event_type]
+%           In the visualization, there will be M subplots, in each subplot
+%           the time series contains N behavioral variables.
+% 
+% @param args -- users can set different fields of this input
+%           parameter to add elements on the visualization plot. 
+%        args.title -- setting the title of the plot;
+%        args.annotation -- the annotation along side the visualized 
+%           time series, such as the variable name;
+%        args.colormap -- the colors of the visualized time series;
+%        args.save_name -- the file name if the user wants to save the
+%           plot.
+% 
+% @author Tian Linger Xu txu@iu.edu
+% Last update: Feb, 29, 2020
 
 LENGTH_CEVENT = 3;
 

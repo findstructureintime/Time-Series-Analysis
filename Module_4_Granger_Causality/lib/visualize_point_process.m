@@ -42,7 +42,7 @@ if ~isfield(vis_args, 'color_code')
 end
 
 if ~isfield(vis_args, 'colormap')
-    vis_args.colormap = distinguishable_colors(num_streams);
+    vis_args.colormap = get_colormap(num_streams);
 end
 
 visualize_time_series(plot_data, vis_args);

@@ -23,7 +23,7 @@ Script 7: [plotTimeseriesWithEvents.m](plotTimeseriesWithEvents.m)
 Script 8: [plotSensorData.m](plotSensorData.m])
 
 
-For all scripts below you will want to start MATLAB and navigate to the folder where the provided material (.M-functions and the data files) are located. That is, make MATLAB’s current folder equal to the folder to which you downloaded this module (e.g. ‘C:\...\My Documents’). After this you can call these functions via the command line or the Matlab GUI.
+For all scripts below you will want to start MATLAB or Octave and navigate to the folder where the provided material (.M-functions and the data files) are located. That is, make MATLAB’s current folder equal to the folder to which you downloaded this module (e.g. ‘C:\...\My Documents’). After this you can call these functions via the command line or the Matlab/Octave GUI.
 
 **Script 1: *programmingBasics.m***
 
