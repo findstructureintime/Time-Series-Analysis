@@ -89,16 +89,16 @@ You should see the original triangle, now with blue squares. If you leave out th
 
 5. Now we are ready to plot some actual data from a study! Highlight and run the following lines to open up two data files. 
 ```matlab
-dataDir='C:\Users\kdeba\Dropbox\Libraries\Documents\presentations\2018ICIS\workshop\finalmaterials\Kayamaterials\data\';
-saveDir='C:\Users\kdeba\Dropbox\Libraries\Documents\presentations\2018ICIS\workshop\finalmaterials\Kayamaterials\data\outputs\';
+dataDir= fullfile('.', data');
+saveDir= fullfile('.', 'data', 'outputs');
 
 % use string concatenation function strcat to specify exact data files
-fnameG=strcat(dataDir,'InfGaze_P6_4mo.csv');
-fnameH=strcat(dataDir,'InfHands_P6_4mo.csv');
+fnameG = strcat(dataDir, '\InfGaze_P6_4mo.csv');
+fnameH = strcat(dataDir, '\InfHands_P6_4mo.csv');
 
 %read face and hand data using csvread command
-gazeData=csvread(fnameG);
-handsData=csvread(fnameH);
+gazeData = csvread(fnameG);
+handsData = csvread(fnameH);
 ```
 
 You have just loaded two sets of timeseries data, *gazeData* and *handsData* into the workspace. Double click them in the workspace to view the data in the variable viewer. Each array contains three binary timeseries representing a single infants’ gaze *(gazeData)* or manual contact *(handsData)* with a set of three objects, annotated from a single session with a four-month-old infant. All annotations were completed by human coders labeling all changes at a rate of 10 frames / second (detailed in de Barbaro, Johnson, Forster & Deak, 2016, cited in main text). Each variable is a 3x1864 array (i.e. – three rows, 1864 columns), and each row indicates the precise moment that the infant was making contact (1 = contact, 0= no contact) with one of three objects (row 1 = object 1, row 2 = object two, row 3= object three). Note that time is not explicitly represented in this timeseries: given that datapoints are provided at regular intervals, the timing of the activity can be calculated simply by noting which column it occurs in. That is, each column represents a tenth of a second meaning that each 10 columns represent 1 second. 
