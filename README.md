@@ -1,6 +1,6 @@
 # Code Modules for *Finding Structure in Time: Visualizing and Analyzing Behavioral Time Series*
 
-This is the github repository containing the four Matlab code modules with sample examples introduced in the paper, *Finding Structure in Time: Visualizing and Analyzing Behavioral Time Series*. These code modules aim to facilitate behavioral researchers to interpret and analyze high-density multi-modal behavior data, namely, to:
+This is the github repository containing the four Matlab code modules with sample examples introduced in the paper, *Finding Structure in Time: Visualizing and Analyzing Behavioral Time Series*. [Here](https://psyarxiv.com/mpz9g/) is a preprint of the paper. These code modules aim to facilitate behavioral researchers to interpret and analyze high-density multi-modal behavior data, namely, to:
 1) visualize the raw behavioral time series, 
 2) describe the distributional structure of temporal events: Burstiness calculation. This is a method to quantify the temporal regularity of occurrence of events (Goh & Barabási, 2008), 
 3) characterize the nonlinear dynamics over multiple timescales with Cross-Recurrence Quantification Analysis (CRQA) (Zbilut, Giuliani & Webber, 1998),

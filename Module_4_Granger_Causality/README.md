@@ -32,7 +32,7 @@ There are two sample dataset files, the user can try out both files. Each sample
 
 **data_matrix** contains the behavioral time series. This is a *N by M by K* matrix in which *N* is the number of  time series variables, *M* is the length of the trial and *K* is the number of trials.
 
-**variable_list** contains the *N* variable names in **data_matrix** from top to last row. In our example, we titled our variables with the source behavioral module: infant eye, parent eye, infant hand, parent hand and parent speech. For in-depth explanation of the sample dataset, please see the Scripts & Sample Data section and the Results section in our paper [link]();
+**variable_list** contains the *N* variable names in **data_matrix** from top to last row. In our example, we titled our variables with the source behavioral module: infant eye, parent eye, infant hand, parent hand and parent speech. For in-depth explanation of the sample dataset, please see the Scripts & Sample Data section and the Results section in our paper [link](https://psyarxiv.com/mpz9g/);
 
 3. Visualize the sample time series:
 ```matlab
