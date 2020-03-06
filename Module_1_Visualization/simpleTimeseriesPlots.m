@@ -1,20 +1,22 @@
 function simpleTimeseriesPlots
-% kaya de barbaro june 2018
-
-%this script provide basics for visualizing simple timeseries data 
-% as well as common modifications . it has been designed to be run one line
+% This script provide basics for visualizing simple timeseries data 
+% as well as common modifications. it has been designed to be run one line
 % at a time so users can experience building and modifying plots. it also contains practice problems at the end of the script as well as answers. 
 % for step by step instructions to run this script, see the README doc
+% 
+% @author Kaya de Barbaro, kaya@austin.utexas.edu
+% last updated date March 06, 2020
 
 clearvars; 
+% load supporting function in the folder 'libs' into the current workspace
 addpath('libs');
 
-%get to know the simple plot fuction
+% get to know the simple plot fuction
 figure(1)
 plot(1,1) 
 plot(1,1, 'rs','MarkerSize',10)
 
-%plot your first timeseries using the syntax plot(xvals, yvals)!
+% plot your first timeseries using the syntax plot(xvals, yvals)!
 figure (1)
 plot([1 2 3 4 5], [1 2 3 2 1])
 
@@ -27,7 +29,7 @@ plot([1 2 3 4 5], [1 2 3 2 1], 'rs','MarkerSize',10)
 figure (2)
 plot([1 2 3 2 1], 'bs','MarkerSize',10)
 
-%now, lets open up some actual data to plot
+% now, lets open up some actual data to plot
 % use the string concatenation function strcat to specify exact location and name of the data files
 dataDir = fullfile('.', 'data');
 

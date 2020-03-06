@@ -23,58 +23,60 @@ Script 7: [plotTimeseriesWithEvents.m](plotTimeseriesWithEvents.m)
 Script 8: [plotSensorData.m](plotSensorData.m])
 
 
-For all scripts below you will want to start MATLAB or Octave and navigate to the folder where the provided material (.M-functions and the data files) are located. That is, make MATLAB’s current folder equal to the folder to which you downloaded this module (e.g. ‘C:\...\My Documents’). After this you can call these functions via the command line or the Matlab/Octave GUI.
+For all scripts below you will want to start MATLAB or Octave and navigate to the folder where the provided material (.M-functions and the data files) are located. That is, making MATLAB’s current folder equal to the folder to which you downloaded this module (e.g. ‘C:\\...\My Documents’). After this you can call these functions via the command line or the Matlab/Octave GUI.
 
 **Script 1: *programmingBasics.m***
 
-1. First, open the programmingbasics.M file using the matlab GUI. Run the following two lines to import the data into Matlab
+1. First, open the *programmingbasics.m* file using the matlab GUI. Run the following two lines to import the data into Matlab
 ```matlab
-filename = strcat(cd, '\data\genericEventData.csv');
+filename = fullfile('.', 'data', 'genericEventData.csv');
 data_events = csvread(filename);
 ```
 
-Hint: To run a line, you can highlight it in the script in Matlab and press F9 (keyboard) or "run selection" on the GUI. You can also copy-paste this line into the command line followed by ‘enter’. Note that all lines that begin with a % are “comments” meaning that they are there for communication between coders. Matlab will not process them as part of the script. 
+Hint: To run a line, you can highlight it in the script in Matlab and press F9 (keyboard) or "run selection" on the GUI. You can also copy-paste this line into the command line followed by ‘enter’. Note that all lines that begin with a % are “comments” meaning that they are there for documentation purpose. Matlab will not process them as part of the script. 
 
-You have just loaded an array csv_events_loc, into the Workspace. More specifically this is an 87 x 3 double array, meaning it has 87 rows and 3 columns and the values are all numeric. Each event is in its own row. The start times of the events are in column 1, the end times in column 2 and the type of event is in column 3. There are four types of events, each coded as a number between 1 and 4. If you go to your workspace you should now find a variable named csv_events_loc in it. If you double click this variable in the workspace Matlab will open a variable window that allows you to view the array. 
+Here we use the system function *fullfile()* to specify exact location and name of the data files *Fullfile()* is a built-in function to build full file path name from parts (such as folder names and file names) with the file separator used in the operating system on each user's personal computer. Using this function allows the scripts to run on all types operating systems supported by Matlab and Octave. The first input argument, *'.'*, refers to the current directory.
+
+You have just loaded an array *data_events* into the workspace. More specifically this is an 87 x 3 double array, meaning it has 87 rows and 3 columns and the values are all numeric. Each event is in its own row. The start times of the events are in column 1, the end times in column 2 and the type of event is in column 3. There are four types of events, each coded as a number between 1 and 4. If you go to your workspace you should now find a variable named csv_events_loc in it. If you double click this variable in the workspace Matlab will open a variable window that allows you to view the array. 
 
 2. We will now begin accessing the data in this array. For example, to find out the start time of the third event, and store it in a new variable, you would run the line: 
 ```matlab
 third_event_onset = data_events(3,1)
 ```
 
-In general, the syntax for accessing (or referencing) array data in matlab. And then storing it as a new variable, is as follows: *name_of_variable_to_store = array_name(row, column)*. You can use this to access data from any row or column of data_events. Again, once you create a variable it is stored in your workspace. Also, try changing the numbers in the row and column positions to access other elements in the array, or changing the name of the variable to store another data element.
+In general, the syntax for accessing (or referencing) array data and storing it as a new variable, is as follows: *name_of_variable_to_store = array_name(row, column)*. You can use this to access data from any row or column of *data_events*. You can try changing the numbers in the row and column positions to access other elements in the array, or changing the name of the variable to store another data element.
 
-3. The next lines show you more techniques for accessing multiple array element at once, how to manipulate arrays by adding rows or columns, or by using simple algebra to shift array elements, how to use the size function to determine the size of your arrays, and how to write variables in your workspace to your computer. 
+3. The next few lines show you more techniques for accessing multiple array element at once, such as: how to manipulate arrays by adding rows or columns, or by using simple algebra to shift array elements, how to use the size function to determine the size of your arrays, and how to write variables in your workspace to your computer. 
 
 Try each and see what it does. 
 
-Hint: The comments detail exactly what each line does. 
+Hint: The inline comments detail exactly what each line does. 
 
-4. For more practice, there are a set of exercises at the bottom of the script. Try to do each on your own, and scroll down for the answers to each. 
+4. For more practice, there are a set of exercises at the bottom of the script. Try to do each on your own, and scroll down for the answers to each.
 
 
 **Script 2: *simpleTimeseriesPlots.m***
 
 1. Next, open the script called simpleTimeseriesPlots.m. We will also run this script line	by line. Highlight and run the following lines: 
 ```matlab
-%get to know the simple plot function
+% get to know the simple plot function
 figure(1)
 plot (1,1) 
 plot (1,1, 'rs','MarkerSize',10)
 ```
 
-The first line of the script will open a new window with a figure object, Figure 1. The second line plots a single datapoint at the position x= 1 y =1 using the syntax *plot(xvalues, yvalues)*. However, as a single datapoint it is not visible on your plot. Therefore, in the third line we replot the datapoint at the same location specifying it as a redsquare *(‘rs’)* at size 10 *('MarkerSize',10)*. We will provide more information about these stylistic changes further later in this script. 
+The first line of the script will open a new window with a figure object, Figure 1. The second line plots a single datapoint at the position x=1 y=1 using the syntax *plot(xvalues, yvalues)*. However, as a single datapoint it is not visible on your plot. Therefore, in the third line we replot the datapoint at the same location specifying it as a redsquare *(‘rs’)* at size 10 *('MarkerSize',10)*. We will provide more information about these stylistic changes further later in this script. 
 
 2. Now run lines the next lines to plot your first timeseries!
 ```matlab
-%plot your first timeseries!
+% plot your first timeseries!
 figure (1)
 plot([1 2 3 4 5], [1 2 3 2 1])
 ```
 
-Figure 1 should now contain a two lines in the shape of the top of a triangle. Again here we use the syntax *plot(xvals, yvals)*, but now, rather than providing a single datapoint, we provide a sequence of five x values and five y values as arrays of data, specifying five datapoints at (x1, y1), (x2, y2) and so on, i.e. five points at the (x,y) locations: (1,1) (2,2), (3,3) (4,2) and (5,1). The *plot(xvals, yvals)* function automatically connects the points into a line. 
+Figure 1 should now contain a two lines in the shape of the top of a triangle. Again here we use the syntax *plot(xvals, yvals)*, but now, rather than providing a single datapoint, we provide a sequence of five *x* values and five *y* values as arrays of data, specifying five datapoints at (x1, y1), (x2, y2) and so on, i.e. five points at the (x,y) locations: (1,1) (2,2), (3,3) (4,2) and (5,1). The *plot(xvals, yvals)* function automatically connects the points into a line. 
 
-Hint: if you would like to see the five points on the plot, run the lines under the comment `% add each datapoint as a red box`. The first line indicates to Matlab to draw on top of what is already plotted on Figure 1, rather than overwriting it. Line 18 plots the timeseries as a set of red square boxes. 
+Hint: if you would like to see the five points on the plot, run the lines under the comment `% add each datapoint as a red box`. The first line indicates to Matlab to draw on top of what is already plotted on Figure 1, rather than overwriting it. Line 18 plots the timeseries as a set of red square boxes.
 
 3. Play with this simple timeseries to become familiar with the basic plot (xvals, yvals) syntax. To shift the datapoints so that the xvalues start at x = 6 rather than x = 1, edit your script as follows and rerun it: *plot([6 7 8 9 10], [1 2 3 2 1])*. To make the 	triangle steeper, edit your script as follows and rerun it: *plot([6 7 8 9 10], [1 4 9 4 1])*.
 
