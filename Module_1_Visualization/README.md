@@ -35,7 +35,7 @@ data_events = csvread(filename);
 
 Hint: To run a line, you can highlight it in the script in Matlab and press F9 (keyboard) or "run selection" on the GUI. You can also copy-paste this line into the command line followed by ‘enter’. Note that all lines that begin with a % are “comments” meaning that they are there for documentation purpose. Matlab will not process them as part of the script. 
 
-Here we use the system function *fullfile()* to specify exact location and name of the data files *Fullfile()* is a built-in function to build full file path name from parts (such as folder names and file names) with the file separator used in the operating system on each user's personal computer. Using this function allows the scripts to run on all types operating systems supported by Matlab and Octave. The first input argument, *'.'*, refers to the current directory.
+Here we use the system function `fullfile()` to specify exact location and name of the data files. `Fullfile()` is a built-in function to build full file path name from parts (such as folder names and file names) with the file separator used in the operating system on each user's personal computer. Using this function allows the scripts to run on all types operating systems supported by Matlab and Octave. The first input argument, `'.'`, refers to the current directory.
 
 You have just loaded an array *data_events* into the workspace. More specifically this is an 87 x 3 double array, meaning it has 87 rows and 3 columns and the values are all numeric. Each event is in its own row. The start times of the events are in column 1, the end times in column 2 and the type of event is in column 3. There are four types of events, each coded as a number between 1 and 4. If you go to your workspace you should now find a variable named csv_events_loc in it. If you double click this variable in the workspace Matlab will open a variable window that allows you to view the array. 
 
@@ -44,7 +44,7 @@ You have just loaded an array *data_events* into the workspace. More specificall
 third_event_onset = data_events(3,1)
 ```
 
-In general, the syntax for accessing (or referencing) array data and storing it as a new variable, is as follows: *name_of_variable_to_store = array_name(row, column)*. You can use this to access data from any row or column of *data_events*. You can try changing the numbers in the row and column positions to access other elements in the array, or changing the name of the variable to store another data element.
+In general, the syntax for accessing (or referencing) array data and storing it as a new variable, is as follows: `name_of_variable_to_store = array_name(row, column)`. You can use this to access data from any row or column of *data_events*. You can try changing the numbers in the row and column positions to access other elements in the array, or changing the name of the variable to store another data element.
 
 3. The next few lines show you more techniques for accessing multiple array element at once, such as: how to manipulate arrays by adding rows or columns, or by using simple algebra to shift array elements, how to use the size function to determine the size of your arrays, and how to write variables in your workspace to your computer. 
 
