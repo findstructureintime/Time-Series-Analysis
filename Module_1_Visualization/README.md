@@ -139,24 +139,24 @@ title('Infant Gaze: three objects')
 axis([0 size(gazeData,2)+100 0 1.5])
 ```
 
-We can now see the pattern of the infant’s gaze across the entire session: infants first look back and forth at object 2 (in green), then object three (in blue) and lastly, object 1 (in red). This one-at-a-time pattern of gaze is very different from that of older infants, who rapidly alternate their gaze between multiple simultaneously available objects (see de Barbaro, Johnson, Forster & Deak, 2016). You can use the magnifying glass to zoom in on any aspect of the plot (note that you can specify horizontal or vertical zoom only as well). The next five sets of comments show you more options for changing aesthetic aspects of your plotted datapoints/timeseries, known as “line specification”.
+We can now see the pattern of the infant’s gaze across the entire session: infants first look back and forth at object 2 (in green), then object three (in blue) and lastly, object 1 (in red). This one-at-a-time pattern of gaze is very different from that of older infants, who rapidly alternate their gaze between multiple simultaneously available objects (see *de Barbaro, Johnson, Forster & Deak, 2016*). You can use the magnifying glass to zoom in on any aspect of the plot (note that you can specify horizontal or vertical zoom only as well). The next five sets of comments show you more options for changing aesthetic aspects of your plotted datapoints/timeseries, known as “line specification”.
 
-8. Next, lets run the following lines to plot gaze to all objects on a single plot. 
+8. Next, let’s run the following lines to plot gaze to all objects on a single plot. 
 ```matlab
 % plot gaze and hands data together using two linked subplots
-figure (5)
-ax1= subplot(2,1,1);    % syntax is subplot(total rows of plots, total 	columns of plots, position of current plot to be plotted)
-plot(gazeData(1,:),'r')
-axis ([0 size(gazeData,2)+100 0 1.5 ])
+figure(5)
+ax1 = subplot(2,1,1);    % syntax is subplot(total rows of plots, total 	columns of plots, position of current plot to be plotted)
+plot(gazeData(1,:), 'r')
+axis([0 size(gazeData,2)+100 0 1.5])
 title('Looking at red toy')
  
 ax2= subplot(2,1,2);
 plot(handsData(1,:),'r')
-axis ([0 size(gazeData,2)+100 0 1.5 ])
+axis([0 size(gazeData,2)+100 0 1.5 ])
 title('Touching red toy')    %-----> try zooming in on one
 ```
 
-You now have two plots within a single figure: one that indicates when infants look to the red object, and another that indicates when it touches or holds the red object. The *subplot* function is used to create multiple plots within a single figure with the syntax *subplot(total rows of plots, total columns of plots, position of current plot to be plotted)*. 	Thus, *subplot (2,1,1)* makes a space for two plots stacked on top of each other horizontally, and plots whatever data is specified in the next plot function in the first plot grid.  The code *subplot(2,1,2)* specifies that the second plot function i.e. *plot(handsData(1,:),'r')*, should be placed in the second position of the 2x1 plot grid. Try plotting another figure where there are two plots side by side by editing the subplot commands as follows: *subplot(1,2,1)* and *subplot(1,2,2)* columns. Finally, try zooming in on the gaze plot. Notice that the x axis of the two plots are not linked, one zooms in and the other stays zoomed out. Run the line *linkaxes([ax1,ax2],'x')*, to link the x axes of the plots. 
+You now have two plots within a single figure: one that indicates when infants look to the red object, and another that indicates when it touches or holds the red object. The `subplot` function is used to create multiple plots within a single figure with the syntax `subplot(total rows of plots, total columns of plots, position of current plot to be plotted)`. 	Thus, `subplot (2,1,1)` makes a space for two plots stacked on top of each other horizontally, and plots whatever data is specified in the next plot function in the first plot grid.  The code `subplot(2,1,2)` specifies that the second plot function i.e. `plot(handsData(1,:),'r')`, should be placed in the second position of the 2x1 plot grid. Try plotting another figure where there are two plots side by side by editing the subplot commands as follows: `subplot(1,2,1)` and `subplot(1,2,2)` columns. Finally, try zooming in on the gaze plot. Notice that the x axis of the two plots are not linked, one zooms in and the other stays zoomed out. Run the line `linkaxes([ax1,ax2],'x')`, to link the x axes of the plots. 
 
 9. The lines prefaced by the comment `% generate and plot summed gaze and hands data` show you how to easily create and plot new timeseries that represent different ways of summarizing the data in your existing arrays. The lines after the `%save your plots` comment show you how to plot the most recently edited figure as a variety of image types.
 
