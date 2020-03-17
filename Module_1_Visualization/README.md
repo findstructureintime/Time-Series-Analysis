@@ -57,7 +57,7 @@ Hint: The inline comments detail exactly what each line does.
 
 **Script 2: *simpleTimeseriesPlots.m***
 
-1. Next, open the script called simpleTimeseriesPlots.m. We will also run this script line	by line. Highlight and run the following lines: 
+1. Next, open the script called *simpleTimeseriesPlots.m*. We will also run this script line by line. Highlight and run the following lines: 
 ```matlab
 % get to know the simple plot function
 figure(1)
@@ -65,7 +65,7 @@ plot (1,1)
 plot (1,1, 'rs','MarkerSize',10)
 ```
 
-The first line of the script will open a new window with a figure object, Figure 1. The second line plots a single datapoint at the position x=1 y=1 using the syntax *plot(xvalues, yvalues)*. However, as a single datapoint it is not visible on your plot. Therefore, in the third line we replot the datapoint at the same location specifying it as a redsquare *(‘rs’)* at size 10 *('MarkerSize',10)*. We will provide more information about these stylistic changes further later in this script. 
+The first line of the script will open a new window with a figure object, *Figure 1*. The second line plots a single datapoint at the position x=1 y=1 using the syntax `plot(xvalues, yvalues)`. However, as a single datapoint it is not visible on your plot. Therefore, in the third line we replot the datapoint at the same location specifying it as a redsquare `(‘rs’)` at size 10 `('MarkerSize',10)`. We will provide more information about these stylistic changes further later in this script. 
 
 2. Now run lines the next lines to plot your first timeseries!
 ```matlab
@@ -74,13 +74,13 @@ figure (1)
 plot([1 2 3 4 5], [1 2 3 2 1])
 ```
 
-Figure 1 should now contain a two lines in the shape of the top of a triangle. Again here we use the syntax *plot(xvals, yvals)*, but now, rather than providing a single datapoint, we provide a sequence of five *x* values and five *y* values as arrays of data, specifying five datapoints at (x1, y1), (x2, y2) and so on, i.e. five points at the (x,y) locations: (1,1) (2,2), (3,3) (4,2) and (5,1). The *plot(xvals, yvals)* function automatically connects the points into a line. 
+Figure 1 should now contain a two lines in the shape of the top of a triangle. Again here we use the syntax `plot(xvals, yvals)`, but now, rather than providing a single datapoint, we provide a sequence of five *x* values and five *y* values as arrays of data, specifying five datapoints at (x1, y1), (x2, y2) and so on, i.e. five points at the (x,y) locations: (1,1) (2,2), (3,3) (4,2) and (5,1). The `plot(xvals, yvals)` function automatically connects the points into a line. 
 
 Hint: if you would like to see the five points on the plot, run the lines under the comment `% add each datapoint as a red box`. The first line indicates to Matlab to draw on top of what is already plotted on Figure 1, rather than overwriting it. Line 18 plots the timeseries as a set of red square boxes.
 
-3. Play with this simple timeseries to become familiar with the basic plot (xvals, yvals) syntax. To shift the datapoints so that the xvalues start at x = 6 rather than x = 1, edit your script as follows and rerun it: *plot([6 7 8 9 10], [1 2 3 2 1])*. To make the 	triangle steeper, edit your script as follows and rerun it: *plot([6 7 8 9 10], [1 4 9 4 1])*.
+3. Play with this simple timeseries to become familiar with the basic `plot(xvals, yvals)` syntax. To shift the datapoints so that the xvalues start at x = 6 rather than x = 1, edit your script as follows and rerun it: `plot([6 7 8 9 10], [1 2 3 2 1])`. To make the triangle steeper, edit your script as follows and rerun it: `plot([6 7 8 9 10], [1 4 9 4 1])`.
 
-4. Now try a variation on the basic *plot(xvals, yvals)* syntax: *plot(yvals)* by running the following lines. 
+4. Now try a variation on the basic `plot(xvals, yvals)` syntax: `plot(yvals)` by running the following lines. 
 ```matlab
 % try the syntax plot(yvals)
 figure (2)
@@ -91,12 +91,11 @@ You should see the original triangle, now with blue squares. If you leave out th
 
 5. Now we are ready to plot some actual data from a study! Highlight and run the following lines to open up two data files. 
 ```matlab
-dataDir= fullfile('.', data');
-saveDir= fullfile('.', 'data', 'outputs');
+dataDir = fullfile('.', data');
+saveDir = fullfile('.', 'data', 'outputs');
 
-% use string concatenation function strcat to specify exact data files
-fnameG = strcat(dataDir, '\InfGaze_P6_4mo.csv');
-fnameH = strcat(dataDir, '\InfHands_P6_4mo.csv');
+fnameG = fullfile(dataDir, 'InfGaze_P6_4mo.csv');
+fnameH = fullfile(dataDir, 'InfHands_P6_4mo.csv');
 
 %read face and hand data using csvread command
 gazeData = csvread(fnameG);
