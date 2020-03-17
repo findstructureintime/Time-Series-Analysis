@@ -91,7 +91,7 @@ You should see the original triangle, now with blue squares. If you leave out th
 
 5. Now we are ready to plot some actual data from a study! Highlight and run the following lines to open up two data files. 
 ```matlab
-dataDir = fullfile('.', data');
+dataDir = fullfile('.', 'data');
 saveDir = fullfile('.', 'data', 'outputs');
 
 fnameG = fullfile(dataDir, 'InfGaze_P6_4mo.csv');
@@ -102,40 +102,41 @@ gazeData = csvread(fnameG);
 handsData = csvread(fnameH);
 ```
 
-You have just loaded two sets of timeseries data, *gazeData* and *handsData* into the workspace. Double click them in the workspace to view the data in the variable viewer. Each array contains three binary timeseries representing a single infants’ gaze *(gazeData)* or manual contact *(handsData)* with a set of three objects, annotated from a single session with a four-month-old infant. All annotations were completed by human coders labeling all changes at a rate of 10 frames / second (detailed in de Barbaro, Johnson, Forster & Deak, 2016, cited in main text). Each variable is a 3x1864 array (i.e. – three rows, 1864 columns), and each row indicates the precise moment that the infant was making contact (1 = contact, 0= no contact) with one of three objects (row 1 = object 1, row 2 = object two, row 3= object three). Note that time is not explicitly represented in this timeseries: given that datapoints are provided at regular intervals, the timing of the activity can be calculated simply by noting which column it occurs in. That is, each column represents a tenth of a second meaning that each 10 columns represent 1 second. 
+You have just loaded two sets of timeseries data, *gazeData* and *handsData* into the workspace. Double click them in the workspace to view the data in the variable viewer. Each array contains three binary timeseries representing a single infants’ gaze *(gazeData)* or manual contact *(handsData)* with a set of three objects, annotated from a single session with a four-month-old infant. All annotations were completed by human coders labeling all changes at a rate of 10 frames / second (detailed in *de Barbaro, Johnson, Forster & Deak, 2016*, cited in main text). Each variable is a 3x1864 array (i.e. – three rows, 1864 columns), and each row indicates the precise moment that the infant was making contact (1 = contact, 0= no contact) with one of three objects (row 1 = object 1, row 2 = object two, row 3= object three). Note that time is not explicitly represented in this timeseries: given that datapoints are provided at regular intervals, the timing of the activity can be calculated simply by noting which column it occurs in. That is, each column represents a tenth of a second meaning that each 10 columns represent 1 second. 
 
 5. To find out the duration of the coded session (in seconds), copy and paste the following 	line into your command window and hit return.
 ```matlab
-size (gazeData,2)/10
+size(gazeData,2)/10
 ```
 
-Hint: review programmingBasics.M if you don’t remember how to use the size function, or how to store this value as a new variable in your workspace. Also, you can search for any matlab function online or the mathworks.com website to get more information about it including examples of how to run it. 
+Hint: review *programmingBasics.M* if you don’t remember how to use the size function, or how to store this value as a new variable in your workspace. Also, you can search for any matlab function online or the mathworks.com website to get more information about it including examples of how to run it. 
 
-6. Now let’s begin plotting this data using the simpleTimeseries.M script. Run the following lines.
- ```matlab
+6. Now let’s begin plotting this data using the *simpleTimeseries.M* script. Run the following lines.
+```matlab
 %plot gaze to first object
 figure(1)
-plot (gazeData(1,:))    % plot(yvals)  % if time is regular across 	your datastreams you dont need to indicate timestamps/ xvals
+plot(gazeData(1,:))    % plot(yvals)  % if time is regular across your datastreams you dont need to indicate timestamps/xvals
+%set the plot title
 title('Infant gaze: Object 1')
  
-axis ([0 size(gazeData,2) 0 1.5 ])                    
+axis([0 size(gazeData,2) 0 1.5])                    
 % axis([XMIN XMAX YMIN YMAX]) 
 ```
 
-After opening a figure, the second line of the script plots the entire first row of the *gazeData* array (i.e. Gaze to Object 1) onto the figure using the syntax: *plot(yvals)*. The remaining lines add a title and adjust the axis to give the line a bit of white space as background. The syntax is *axis([XMIN XMAX YMIN YMAX])*: an array with four values that specify the edges of the figure space using x-y coordinates. To add 10 seconds of additional buffer around the x axis, you can increase the *XMAX* value by running the line axis *([0 1964 0 1.5 ])* or, to if you want this to dynamically buffer based on the actual size of the array, use axis *([0 size(gazeData,2)+100 0  1.5 ])*.
+After opening a figure, the second line of the script plots the entire first row of the *gazeData* array (i.e. Gaze to Object 1) onto the figure using the syntax: `plot(yvals)`. The remaining lines add a title and adjust the axis to give the line a bit of white space as background. The syntax is `axis([XMIN XMAX YMIN YMAX])`: an array with four values that specify the edges of the figure space using x-y coordinates. To add 10 seconds of additional buffer around the x axis, you can increase the *XMAX* value by running the line `axis([0 1964 0 1.5 ])` or, to if you want this to dynamically buffer based on the actual size of the array, use `axis([0 size(gazeData,2)+100 0  1.5]).
 
 Looking at the figure itself, we can see a line that is zero until about frame 1000 and then bounces between 0 and 1 until about frame 1800, meaning that the infant was looking to and from object one between approximately 100-180 seconds. Remember, each frame is 1/10 a second and for each frame that the baby was looking to object 1, the timeseries will be 1, when it is not looking to object one, the timeseries will be 0. 
 
 7. Run the following lines to plot gaze to all objects on a single plot. 
 ```matlab
 % plot gaze to all objects on one plot 
-figure (2)
-plot (gazeData(1,:), 'r') 
+figure(2)
+plot(gazeData(1,:), 'r') 
 hold on
-plot (gazeData(2,:),'g') 
-lot (gazeData(3,:), 'c')    
+plot(gazeData(2,:), 'g') 
+plot(gazeData(3,:), 'c')    
 title('Infant Gaze: three objects')
-axis ([0 size(gazeData,2)+100 0 1.5 ])
+axis([0 size(gazeData,2)+100 0 1.5])
 ```
 
 We can now see the pattern of the infant’s gaze across the entire session: infants first look back and forth at object 2 (in green), then object three (in blue) and lastly, object 1 (in red). This one-at-a-time pattern of gaze is very different from that of older infants, who rapidly alternate their gaze between multiple simultaneously available objects (see de Barbaro, Johnson, Forster & Deak, 2016). You can use the magnifying glass to zoom in on any aspect of the plot (note that you can specify horizontal or vertical zoom only as well). The next five sets of comments show you more options for changing aesthetic aspects of your plotted datapoints/timeseries, known as “line specification”.

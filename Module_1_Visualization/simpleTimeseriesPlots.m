@@ -42,22 +42,23 @@ handsData = csvread(fnameH);
 
 %plot gaze to first object
 figure(1)
-plot (gazeData(1,:))   
+plot(gazeData(1,:))    % plot(yvals)  % if time is regular across your datastreams you dont need to indicate timestamps/xvals
+%set the plot title
 title('Infant gaze: Object 1')
 
-axis ([0 1864 0 1.5 ])                    
+axis([0 1864 0 1.5])                    
 % axis([XMIN XMAX YMIN YMAX])
-axis ([0 size(gazeData,2)+100 0 1.5 ])  
+axis([0 size(gazeData,2)+100 0 1.5 ])  
 
 
 % plot gaze to all objects on one plot 
-figure (2)
-plot (gazeData(1,:), 'g') 
+figure(2)
+plot(gazeData(1,:), 'g') 
 hold on
-plot (gazeData(2,:),'r') 
-plot (gazeData(3,:), 'c')    
+plot(gazeData(2,:), 'r') 
+plot(gazeData(3,:), 'c')    
 title('Infant Gaze: three objects')
-axis ([0 size(gazeData,2)+100 0 1.5 ])
+axis([0 size(gazeData,2)+100 0 1.5])
 
 %You have lots of options for colors and shapes- e.g. 
 figure (21)
