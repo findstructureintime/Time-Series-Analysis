@@ -1,4 +1,3 @@
-
 function demo_visualizations
 
 %this demo will run through the scripts 4-8 associated with the. 
@@ -6,32 +5,15 @@ function demo_visualizations
 % one line at a time, as detailed in the readme.  
 
 %the complete set of scripts provided with this module are as follows: 
-% Script 1: programmingBasics.m
-% Script 2: simpleTimeseriesPlots.m
-% Script 3: simpleEventDataPlots.m
-% Script 4: multiParticipantEventPlotting.m
-% Script 5: annotationImport.m
-% Script 6: convertEvents2Timeseries.m
-% Script 7: plotTimeseriesWithEvents.m
-% Script 8: plotSensorData.m
+% Script 1: multiParticipantEventPlotting.m
+% Script 2: plotTimeseriesWithEvents.m
+% Script 3: plotSensorData.m
 
 
 multiParticipantEventPlotting
 %this script plots event data from multiple participants. Specifically it
 %plots moment-by-moment affect data from three mother-infant dyads engaging in 
 %free play (contributed by Dr. Sherryl Goodman from Emory University as cited in the main text)
-
-
-annotationImport
-% this script transforms the outputs of annotation software commonly used in psychology, such as Elan, DataVyu,
-% Noldus, or Mangold Interact  into a more usable format that can be easily worked with within Matlab. 
-% It saves the transformed data as a csv file that can be imported by other scripts in this module or otherwise.
-
-
-convertEvents2Timeseries
-% this script converts event data into time series data and stores the output in the data folder. 
-% Note that this script will not work on raw /unprocessed event data directly exported from common annotation software. 
-% The script is written to work with annotation software exports that have been processed via Script 5, annotationImport.m 
 
 plotTimeseriesWithEvents
 % this script plots infant participants’ heart rate data (timeseries) as it changes over the course of a session

@@ -353,11 +353,11 @@ Note: To modify the script to work with other data, change the data parameters i
 
 4. Let's run the whole script and open one of the new timeseries csvs from the data folder. The first column is time in seconds, with the interval between timestamps determined by the *sample_rate* variable. Between the onset and the offset times for each event in the original datafile you should see the value corresponding to that affect state. Congratulations, you now have a timeseries!
 
-**Script 6 *convertTimeseries2Events.m***
+**Script 6: *convertTimeseries2Events.m***
 
 This script converts time series data into event format temporal data and stores the output in the data folder. It follows the exact same process flow with the previous script, so we will omit the detailed explanation here. Detailed comments are provided in the script.
 
-**Script 7 *convertEvents2Pointprocess.m***
+**Script 7: *convertEvents2Pointprocess.m***
 
 This script converts event data into point process data which is a specific type of time series data with only 1 or 0 as its categories. Because point process data have only binary values (1 or 0) as its categories, users need to specify the event category that they would like to be converted into process process. The process/logic flow is also similar to the previous two scripts and detailed instructions can be found in the script.
 
