@@ -45,7 +45,7 @@ for pID = [3414  3367 3532] % [ 3011 3029 3292 3466 3569] % etc
     data_pointprocess = event2pointprocess(data_events, eventCategory, sample_rate);
     
     %save the data
-    csvwrite(fullfile(dataDir, [dataLabel, '_PointProcess_', num2str(pID), '.csv']), data_stream);
+    csvwrite(fullfile(dataDir, [dataLabel, '_PointProcess_', num2str(pID), '.csv']), data_pointprocess);
 end
 
 

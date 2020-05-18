@@ -36,6 +36,8 @@ if nargin < 3
     error('Please specify the event category and sample rate.');
 end
 
+default_value = 0;
+
 if nargin < 4
     start_time = events(1, 1);
 end
@@ -46,16 +48,8 @@ end
 
 mask_events = events(:,end) == convert_category;
 events = events(mask_events, :);
-events(:,2) = events(:,1) + sample_rate/2;
-events(:,3) = 1;
-default_value = 0;
+events(:,2) = events(:,1) + sample_rate - eps;
 
-events_count = size(events, 1);
-
-pointprocess = event2timeseries(events, sample_rate, default_value, start_time, end_time);
-
-if events_count ~= sum(pointprocess(:, 2))
-    error('Error! Point process should only have the onsets of events!')
-end
+pointprocess = event2timeseries(events, sample_rate, default_value, start_time, end_time)
 
 end

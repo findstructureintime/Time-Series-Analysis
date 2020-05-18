@@ -1,4 +1,4 @@
-# Module 1: Getting to Know Your Data: Visualization of High-Density Multi-Modal Interactions
+# Module 2: Getting to Know Your Data: Visualization of High-Density Multi-Modal Interactions
 
 With the eight scripts associated with this module you can begin creating visualizations of the most common types of behavioral data collected in psychology research, even with little or no programming experience. The scripts will allow you to make visualizations of various type of data, including event data from annotation of audio or video records, as well as timeseries data, whether from sensors or annotations. 
 
@@ -8,19 +8,11 @@ For novice users, we suggest working through the scripts in the order listed bel
 
 Script 1: [programmingBasics.m](programmingBasics.m)
 
-Script 2: [simpleTimeseriesPlots.m](simpleTimeseriesPlots.m)
+Script 2: [multiParticipantEventPlotting.m](multiParticipantEventPlotting.m)
 
-Script 3: [simpleEventDataPlots.m](simpleEventDataPlots.m)
+Script 3: [plotTimeseriesWithEvents.m](plotTimeseriesWithEvents.m)
 
-Script 4: [multiParticipantEventPlotting.m](multiParticipantEventPlotting.m)
-
-Script 5: [annotationImport.m](annotationImport.m)
-
-Script 6: [convertEvents2Timeseries.m](convertEvents2Timeseries.m)
-
-Script 7: [plotTimeseriesWithEvents.m](plotTimeseriesWithEvents.m)
-
-Script 8: [plotSensorData.m](plotSensorData.m])
+Script 4: [plotSensorData.m](plotSensorData.m])
 
 
 For all scripts below you will want to start MATLAB or Octave and navigate to the folder where the provided material (.M-functions and the data files) are located. That is, making MATLAB’s current folder equal to the folder to which you downloaded this module (e.g. ‘C:\\...\My Documents’). After this you can call these functions via the command line or the Matlab/Octave GUI.

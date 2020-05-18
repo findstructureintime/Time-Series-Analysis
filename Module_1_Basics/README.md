@@ -1,10 +1,10 @@
 # Module 1: Time Series Programming Basics
 
-With the eight scripts associated with this module you can begin creating visualizations of the most common types of behavioral data collected in psychology research, even with little or no programming experience. The scripts will allow you to make visualizations of various type of data, including event data from annotation of audio or video records, as well as timeseries data, whether from sensors or annotations. 
+With the seven scripts in this module, you can begin importing and manipulating the most common types of temporal data collected in behavioral research, even with little or no programming experience. The most common types of temporal data collected in developmental behavioral science research are event data and timeseries data. The scripts in this module will guide users through the basic processes of importing event data from csv files, indexing/slicing event and time seires data in various ways, converting event data from/to time series data, etc.
 
 Additionally, the first three scripts are designed to be run one line at a time to educate novice programmers, and the first two scripts contain practice problems with answers. Users who work through these scripts step-by-step will gain skills and confidence to combine and create variations of the provided scripts to accommodate their own data and research questions. 
 	 	
-For novice users, we suggest working through the scripts in the order listed below. There are eight total scripts, each described below in detail. 
+For novice users, we suggest working through the scripts in the order listed below. There are seven scripts in total, each described below in detail. 
 
 Script 1: [programmingBasics.m](programmingBasics.m)
 
