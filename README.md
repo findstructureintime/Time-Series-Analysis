@@ -1,10 +1,11 @@
 # Code Modules for *Finding Structure in Time: Visualizing and Analyzing Behavioral Time Series*
 
-This is the github repository containing the four Matlab code modules with sample examples introduced in the paper, *Finding Structure in Time: Visualizing and Analyzing Behavioral Time Series*. [Here](https://psyarxiv.com/mpz9g/) is a preprint of the paper. These code modules aim to facilitate behavioral researchers to interpret and analyze high-density multi-modal behavior data, namely, to:
-1) visualize the raw behavioral time series, 
-2) describe the distributional structure of temporal events: Burstiness calculation. This is a method to quantify the temporal regularity of occurrence of events (Goh & Barabási, 2008), 
-3) characterize the nonlinear dynamics over multiple timescales with Cross-Recurrence Quantification Analysis (CRQA) (Zbilut, Giuliani & Webber, 1998),
-4) and quantify the directional relations among a set of interdependent multimodal behavioral variables with Granger Causality Granger, 1969; Bressler & Seth, 2011).
+This is the github repository containing the five Matlab code modules with sample examples introduced in the paper, *Finding Structure in Time: Visualizing and Analyzing Behavioral Time Series*. [Here](https://psyarxiv.com/mpz9g/) is a preprint of the paper. These code modules aim to facilitate behavioral researchers to interpret and analyze high-density multi-modal behavior data, namely, to:
+1) provide a step-by-step “programming basics” tutorial on importing and manipulating common behavioral timeseries data,
+2) visualize the raw behavioral time series, 
+3) describe the distributional structure of temporal events: Burstiness calculation. This is a method to quantify the temporal regularity of occurrence of events (Goh & Barabási, 2008), 
+4) characterize the nonlinear dynamics over multiple timescales with Cross-Recurrence Quantification Analysis (CRQA) (Zbilut, Giuliani & Webber, 1998),
+5) and quantify the directional relations among a set of interdependent multimodal behavioral variables with Granger Causality Granger, 1969; Bressler & Seth, 2011).
 The four methods are complementary to each other, yet each module is standalone. Users can use any specific module as desired.
 
 ## System requirement and Matlab installation
