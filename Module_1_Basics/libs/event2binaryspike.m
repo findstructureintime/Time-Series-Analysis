@@ -1,12 +1,12 @@
-function pointprocess = event2pointprocess(events, convert_category, sample_rate, start_time, end_time)
-% event2pointprocess   Convert event data to point process format data with
-%   categorical value 1 or 0 as event present or not.
+function binaryspikes = event2binaryspike(events, convert_category, sample_rate, start_time, end_time)
+% event2pointprocess   Convert event data to binary spike trains with
+%   categorical value 1 or 0 as event stimulus present or not.
 %
 % Warning:
 % Note that this is a lossy conversion: if there are overlapping events in
 % the events, then only one of them will come through in the point process.
 %
-% pointprocess = event2pointprocess(events, convert_category, sample_rate, start_time, end_time)
+% binaryspikes = event2binaryspike(events, convert_category, sample_rate, start_time, end_time)
 % 
 % INPUT
 %   events:  input events data
@@ -20,11 +20,11 @@ function pointprocess = event2pointprocess(events, convert_category, sample_rate
 %   end_time: (optional) the timestamp when the converted point process ends.
 % 
 % OUTPUT
-%   pointprocess:      the converted point process data
+%   binaryspikes:      the converted point process data
 
 if isempty(events)
     warning('Input events is empty. Return empty point process.');
-    pointprocess = zeros(0, 2);
+    binaryspikes = zeros(0, 2);
     return;
 end
 
@@ -52,9 +52,9 @@ default_value = 0;
 
 events_count = size(events, 1);
 
-pointprocess = event2timeseries(events, sample_rate, default_value, start_time, end_time);
+binaryspikes = event2timeseries(events, sample_rate, default_value, start_time, end_time);
 
-if events_count ~= sum(pointprocess(:, 2))
+if events_count ~= sum(binaryspikes(:, 2))
     error('Error! Point process should only have the onsets of events!')
 end
 
