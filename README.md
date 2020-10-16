@@ -1,6 +1,6 @@
 # Code Modules for *Finding Structure in Time: Visualizing and Analyzing Behavioral Time Series*
 
-This is the github repository containing the five Matlab code modules with sample examples introduced in the paper, *Finding Structure in Time: Visualizing and Analyzing Behavioral Time Series*. [Here](https://psyarxiv.com/mpz9g/) is a preprint of the paper. These code modules aim to facilitate behavioral researchers with varying degrees of programming skills to interpret and analyze high-density multi-modal behavior data.
+This is the github repository containing the five Matlab code modules with sample examples introduced in the paper, *Finding Structure in Time: Visualizing and Analyzing Behavioral Time Series*. [Here](https://doi.org/10.3389/fpsyg.2020.01457) is the paper. These code modules aim to facilitate behavioral researchers with varying degrees of programming skills to interpret and analyze high-density multi-modal behavioral data.
 
 The five modules include:
 1) a step-by-step “programming basics” tutorial that introduces novice programmers to common behavioral timeseries data as well as scripts necessary to import and manipulate these data. It also provides scripts for transforming data to and from common data formats used across all modules to facilitate modifying module material to work with user data,
