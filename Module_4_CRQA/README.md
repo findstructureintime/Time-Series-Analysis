@@ -1,6 +1,6 @@
-# Module 3: Cross-recurrence quantification analysis of dyadic interaction
+# Module 4: Cross-recurrence quantification analysis of dyadic interaction
 
-With these five MATLAB scripts you can perform cross-recurrence quantification analysis (CRQA) on categorical data. 
+With these five MATLAB scripts you can perform cross-recurrence quantification analysis (CRQA) on categorical data.
 
 Start MATLAB or Octave and select the folder where the provided material (M-functions and data file) is located. That is, make MATLAB/Octave’s current folder equal to the folder to which you downloaded the GitHub folder of this module (e.g. ‘C:\...\My Documents’). After this you can call these functions on the command line.
 
@@ -40,12 +40,14 @@ PlotCRP(rec)
 
 Note: This is a typical checkerboard pattern you would expect for nominal CRQA. There are three colors in this CRP representing the three different types of states of the dyadic system, based on the numerical values in rec: red for the value +1, blue for the value -1, and white for the value 0. All together the CRP nicely displays the rich coordinative structure of the dyadic interaction across all possible timescales.
 
-5. 5. Finally, we will calculate several CRQA measures from this CRP, in order to quantify its structure. Run the following function:
+Corrigendum: Figure 6 in the Frontiers article looks different than the one produced by the script above. This is an error: It should read ‘PP1’ along the vertical axis (instead of ‘PP2’) and ‘PP2’ along the horizontal axis (instead of ‘PP1’) in Figure 6 in the article. (In the figure the recurrence matrix was transposed by mistake.) The rest of the calculations are correct.
+
+5. Finally, we will calculate several CRQA measures from this CRP, in order to quantify its structure. Run the following function:
 ```matlab
 [Chromatic_CRQA , Anisotropic_CRQA] = CRQA_out(rec)
 ```
 
-his function performs **Chromatic CRQA** and **Anisotropic CRQA** on the data, and provides two output files.
+This function performs **Chromatic CRQA** and **Anisotropic CRQA** on the data, and provides two output files.
 
 The first output file, *Chromatic_CRQA*, presents the recurrence rate, RR, for the red areas in the upper row and for the blue areas in the lower row. RR is given both as a proportion of the total number of points in the CRP (first column) and as a proportion of the total number of behavioral matches (second column).
 

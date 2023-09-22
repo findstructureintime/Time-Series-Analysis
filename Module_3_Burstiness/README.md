@@ -1,4 +1,4 @@
-# Module 2: Tapping into the temporal structure of developmental data using burstiness analysis
+# Module 3: Tapping into the temporal structure of developmental data using burstiness analysis
 
 With the MATLAB demo script, you can perform the burstiness analysis on spike trains of events. 
 

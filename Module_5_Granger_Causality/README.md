@@ -1,4 +1,4 @@
-# Module 4: Discovering directional influence among multimodal behavioral variables with Granger Causality
+# Module 5: Discovering directional influence among multimodal behavioral variables with Granger Causality
 
 With this code module, users can perform Granger Causality computation among a set of point process time series variables. The demo script, *demo_granger_causality.m*, provides guidance through the process step by step with a demo example. The sub-folder, *lib/*, contains all the supporting functions involved in the calculation of GC and significance test. 
 
